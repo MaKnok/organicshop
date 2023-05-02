@@ -1,0 +1,24 @@
+<section class="container">
+
+  <form class="form mt-4" (ngSubmit)="enterLogin()" #loginForm="ngForm">
+      <h2 class="formulario_titulo">Login</h2>
+
+      <div class="form-group">
+        <label for="user">Usuário</label>
+        <input class="form-control" id="user" type="text" name="user" [(ngModel)]="user" #userField="ngModel" required>
+        <div class="invalid-feedback" *ngIf="userField.invalid && userField.touched">{{validationMessage}}</div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Senha</label>
+        <input class="form-control" id="password" type="password" name="password" [(ngModel)]="password" #passwordField="ngModel" required>
+        <div class="invalid-feedback" *ngIf="passwordField.invalid && passwordField.touched">{{validationMessage}}</div>
+      </div>
+
+      <div class="botao-wrapper">
+        <button class="btn btn-secondary btn-block" type="reset">Limpar</button>
+        <button class="btn btn-primary btn-block" type="submit" [disabled]="loginForm.invalid">Entrar</button>
+      </div>
+  </form>
+</section>
+

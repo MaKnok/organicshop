@@ -1,0 +1,60 @@
+{
+  "inventoryItems": [
+    {
+      "id": "1",
+      "itemPrice": 3.5,
+      "itemName": "Banana Nanica",
+      "itemType": "weight",
+      "date": "2020-11-04T16:30:10.710Z"
+    },
+    {
+      "id": "2",
+      "itemPrice": 7.5,
+      "itemName": "Arroz Integral 500g",
+      "itemType": "unit",
+      "date": "2020-11-04T21:24:10.710Z"
+    },
+    {
+      "id": "3",
+      "itemPrice": 10.5,
+      "itemName": "Avocado",
+      "itemType": "weight",
+      "date": "2020-11-05T21:14:10.710Z"
+    },
+    {
+      "itemName": "Uva Italia",
+      "itemPrice": 8.9,
+      "itemType": "unidade",
+      "date": "2023-03-15T02:33:24.700Z",
+      "id": "nWyCkD-"
+    },
+    {
+      "itemName": "Mexirica",
+      "itemPrice": 4.5,
+      "itemType": "Pesado",
+      "date": "2023-03-16T01:48:00.331Z",
+      "id": "RSwdzPR"
+    },
+    {
+      "itemName": "Berinjela",
+      "itemPrice": 5.6,
+      "itemType": "Pesado",
+      "date": "2023-03-16T02:19:30.262Z",
+      "id": "VBGIEgb"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "userName": "MarinaKn",
+      "userEmail": "marina.knok@organicshop.com",
+      "userPassword": "Jkn2809@2023"
+    },
+    {
+      "id": "2",
+      "userName": "ThiagoSn",
+      "userEmail": "thiago.serena@organicshop.com",
+      "userPassword": "Adn0612@2023"
+    }
+  ]
+}

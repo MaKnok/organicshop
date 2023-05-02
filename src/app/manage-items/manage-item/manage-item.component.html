@@ -1,0 +1,24 @@
+
+<section class="container">
+  <a [routerLink]="['/add-update-item']">Adicionar</a>
+  <h2 class="titulo">Nome da Categoria</h2>
+  <table class="tabela">
+    <thead class="tabela__cabecalho">
+      <th class="tabela__cabecalho__conteudo">Data</th>
+      <th class="tabela__cabecalho__conteudo">Nome do Item</th>
+      <th class="tabela__cabecalho__conteudo">Preço</th>
+    </thead>
+    <tbody *ngIf="inventoryItems?.length > 0; else emptyList">
+      <tr class="tabela__linha"  *ngFor="let item of inventoryItems">
+        <td class="tabela__conteudo">{{ item?.date | date:"short" }}</td>
+        <td class="tabela__conteudo">{{ item?.itemName }}</td>
+        <td class="tabela__conteudo">{{ item?.itemPrice | currency }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #emptyList>
+    <p>Nenhuma operação cadastrada</p>
+  </ng-template>
+</section>
+
+
