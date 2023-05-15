@@ -33,6 +33,11 @@ export const routes: Routes = [
         (m) => m.UserListingModule
       ),
   },
+  {
+    path: 'new-user',
+    loadChildren: () =>
+      import('./new-user/new-user.module').then((m) => m.NewUserModule),
+  },
 ];
 
 @NgModule({

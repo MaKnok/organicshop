@@ -1,6 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 const API = environment.apiURL;
 
@@ -15,7 +17,7 @@ export class AuthService {
   }
 
   getByUserName(userName: string) {
-    return this.http.get(`${API}/users` + '/' + userName);
+    return this.http.get(`${API}/users` + '?userName=' + userName);
   }
 
   registerUser(newUserData: any) {

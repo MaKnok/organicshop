@@ -22,14 +22,33 @@ export class LoginComponent implements OnInit {
       (res) => {
         this.userData = res;
         console.log(this.userData);
-        this.router.navigate(['/home']);
+        console.log(this.user);
+        console.log(this.password);
+        if (this.userData.length == 0) {
+          this.validationMessage = 'Usuário e/ou senha inválidos';
+          console.log(this.validationMessage);
+          this.clearFields();
+          return;
+        } else if (
+          this.userData[0].userName === this.user &&
+          this.userData[0].userPassword === this.password
+        ) {
+          this.router.navigate(['/home']);
+          this.clearValidationMessage();
+          this.clearFields();
+        }
       },
       (error) => {
-        alert('User or password is invalid');
+        this.validationMessage = 'Usuário e/ou senha inválidos';
         console.log(error);
+        console.log(this.validationMessage);
+        this.clearFields();
       }
     );
-    this.clearFields();
+  }
+
+  clearValidationMessage() {
+    this.validationMessage = '';
   }
 
   clearFields() {
