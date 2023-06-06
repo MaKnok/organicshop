@@ -27,6 +27,14 @@ body {
   color: $dark-green !important;
 }
 
+label{
+  font-size: 16pt;
+}
+
+button{
+  font-size: 16pt !important;
+  height: 2em !important;
+}
 
 .invalid-feedback{
   display:block !important;
