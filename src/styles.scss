@@ -1,3 +1,33 @@
+/***_Font Stack_***/
+$font-stack: 'Fira Sans', sans-serif;
+
+$green: #82A700;
+$dark-green: #248B00;
+$brown: #503D0E;
+$orange: #E16409;
+$yellow: #E1CC09;
+
+/***_Secondary Color Scheme_***/
+$pastel-green: #B1D044;
+$pastel-dark-green: #66B749;
+$pastel-brown: #937838 ;
+$pastel-orange: #E7B28B;
+$pastel-yellow: #F1E680;
+
+/***_Tertiary Color Scheme_***/
+$transparent-green: #E6FB9D;
+$transparent-dark-green: #D2E7CB;
+$transparent-brown: #DDD7C8 ;
+$transparent-orange: #F5E2D5;
+$transparent-yellow: #FFF9BE;
+
+
+body {
+  font: 100% $font-stack !important;
+  color: $dark-green !important;
+}
+
+
 .invalid-feedback{
   display:block !important;
 }
