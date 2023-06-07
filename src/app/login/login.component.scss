@@ -1,16 +1,23 @@
+.container-fluid{
 
-img.img-fluid {
+  img.img-fluid {
     width: 22rem;
-}
-
-.buttons-wrapper{
-  display:flex;
-  flex-direction: row;
-  justify-content: space-between;
-
-  button{
-    width: 48%;
   }
+
+  input.form-control{
+    background-color: var(--white) !important;
+  }
+
+  .buttons-wrapper{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    button{
+      width: 48%;
+    }
+  }
+
 }
 
 @media only screen and (min-width: 600px) {

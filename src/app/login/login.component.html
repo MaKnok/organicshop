@@ -1,6 +1,5 @@
 <div class="container-fluid">
   <section class="container text-center">
-
     <form class="form mt-4" (ngSubmit)="enterLogin()" #loginForm="ngForm">
 
         <div class="logo-img">
@@ -11,7 +10,7 @@
 
         <div class="form-group mt-4">
           <label for="user">Usuário</label>
-          <input class="form-control mt-2"
+          <input class="form-control mt-2 text-center"
                  id="user"
                  type="text"
                  name="user"
@@ -23,7 +22,7 @@
 
         <div class="form-group mt-3">
           <label for="password">Senha</label>
-          <input class="form-control mt-2"
+          <input class="form-control mt-2 text-center"
                  id="password"
                  type="password"
                  name="password"
@@ -40,6 +39,9 @@
         </div>
 
     </form>
+    <div class="row mt-5">
+      <h5 class="new-user" [routerLink]="['/new-user']" >Novo usuário</h5>
+    </div>
   </section>
 </div>
 

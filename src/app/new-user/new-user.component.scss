@@ -1,0 +1,15 @@
+form{
+  background-color: var(--transparent-green);
+  padding: 1em;
+  border-radius: 1em;
+
+  input.form-control{
+    background-color: var(--white) !important;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .container {
+    max-width: 35rem;
+  }
+}

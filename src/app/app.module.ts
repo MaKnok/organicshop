@@ -8,11 +8,12 @@ import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { AppRoutingModule } from './app-routing.module';
 import { ManageItemsModule } from './manage-items/manage-items.module';
+import { FooterComponent } from './footer/footer.component';
 
 registerLocaleData(localePt, 'pt');
 
 @NgModule({
-  declarations: [AppComponent, TopBarComponent],
+  declarations: [AppComponent, TopBarComponent, FooterComponent],
   imports: [
     AppRoutingModule,
     BrowserModule,
