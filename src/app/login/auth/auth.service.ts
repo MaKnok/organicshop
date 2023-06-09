@@ -1,10 +1,8 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
-
-const API = environment.apiURL;
+import { User } from '../../models/user.model';
+import { Observable, map, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,19 +10,22 @@ const API = environment.apiURL;
 export class AuthService {
   constructor(private http: HttpClient) {}
 
+  private API: string = environment.apiURL;
+
   getAll() {
-    return this.http.get(`${API}/users`);
+    return this.http.get<User[]>(this.API + '/users');
   }
 
-  getByUserName(userName: string) {
-    return this.http.get(`${API}/users` + '?userName=' + userName);
+  getByUserName(userName: string): Observable<User[]> {
+    const params = new HttpParams().append('userName', userName);
+    return this.http.get<User[]>(this.API + '/users', { params });
   }
 
   registerUser(newUserData: any) {
-    return this.http.post(`${API}/users`, newUserData);
+    return this.http.post<User>(this.API + '/users', newUserData);
   }
 
   updateUser(id: string, newUserData: any) {
-    return this.http.put(`${API}/users` + '/' + id, newUserData);
+    return this.http.put<User>(this.API + '/users/' + id, newUserData);
   }
 }
