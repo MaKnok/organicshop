@@ -1,8 +1,8 @@
-import { HttpClient, HttpResponse, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { User } from '../../models/user.model';
-import { Observable, map, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +21,7 @@ export class AuthService {
     return this.http.get<User[]>(this.API + '/users', { params });
   }
 
-  registerUser(newUserData: any) {
+  registerUser(newUserData: User) {
     return this.http.post<User>(this.API + '/users', newUserData);
   }
 

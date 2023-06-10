@@ -1,11 +1,28 @@
 form{
   background-color: var(--transparent-green);
-  padding: 1em;
+  padding: 1.5em;
   border-radius: 1em;
 
   input.form-control{
     background-color: var(--white) !important;
   }
+
+  .buttons-wrapper{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    button{
+      width: 48%;
+    }
+  }
+
+}
+
+p > a{
+  color: var(--dark-green);
+  cursor: pointer;
+  text-decoration: none;
 }
 
 @media only screen and (min-width: 600px) {

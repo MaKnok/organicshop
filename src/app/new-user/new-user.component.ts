@@ -21,5 +21,16 @@ export class NewUserComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.newUserForm = this.formBuilder.group({
+      userName: ['', [Validators.required, Validators.minLength(4)]],
+      userEmail: ['', [Validators.required, Validators.email]],
+      userPassword: ['', [Validators.required]],
+    });
+  }
+
+  public registerNewUser() {
+    const newUser = this.newUserForm.getRawValue() as NewUser;
+    console.log(newUser);
+  }
 }

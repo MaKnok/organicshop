@@ -18,6 +18,12 @@
     }
   }
 
+  h5.new-user > a{
+    color: var(--brown);
+    cursor: pointer;
+    text-decoration: none;
+  }
+
 }
 
 @media only screen and (min-width: 600px) {

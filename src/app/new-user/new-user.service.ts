@@ -2,6 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NewUser } from './new-user';
 import { environment } from 'src/environments/environment';
+import { AuthService } from 'src/app/login/auth/auth.service';
+import { User } from '../models/user.model';
+import { Observable } from 'rxjs';
 
 const API = environment.apiURL;
 
@@ -9,10 +12,10 @@ const API = environment.apiURL;
   providedIn: 'root',
 })
 export class NewUserService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
-  registerNewUser(newUser: NewUser) {
-    return this.http.post(`${API}/users`, newUser);
+  registerNewUser(newUser: NewUser): Observable<User> {
+    return this.authService.registerUser(newUser);
   }
 
   verifyExistingUser(userName: string) {
