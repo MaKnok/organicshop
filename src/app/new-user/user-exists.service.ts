@@ -12,11 +12,14 @@ export class UserExistsService {
   userExists() {
     return (control: AbstractControl) => {
       return control.valueChanges.pipe(
-        switchMap((userName) =>
-          this.newUserService.verifyExistingUser(userName)
+        //receives what user is typing...
+        switchMap(
+          (userName) => this.newUserService.verifyExistingUser(userName)
+          //converts typed value into request to backend, changes flow
         ),
-        map((userExists) => (userExists ? { existingUser: true } : null)),
-        first()
+        map((user) => (user.length !== 0 ? { existingUser: true } : null)),
+        //doesnt change flow, but result
+        first() //closes observable
       );
     };
   }

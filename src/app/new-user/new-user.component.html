@@ -4,7 +4,10 @@
     <h4 class="text-center mt-4">Registrar novo usuário</h4>
 
     <form class="form mt-4" [formGroup]="newUserForm" (submit)="registerNewUser()">
-        <div class="form-group">
+
+      <div class="row row-cols-2">
+        <div class="col">
+          <div class="form-group">
             <label for="userName">Usuário</label>
             <input
               class="form-control mt-2 text-center"
@@ -12,38 +15,64 @@
             />
             <div class="invalid-feedback"
                  *ngIf="newUserForm.get('userName')?.errors?.required
-                 && newUserForm.get('userName')?.touched">{{validationMessage}}
+                 && newUserForm.get('userName')?.touched">Nome do usuário obrigatório
+            </div>
+            <div class="invalid-feedback"
+            *ngIf="newUserForm.get('userName')?.errors?.existingUser">
+            Usuário já existe
             </div>
         </div>
 
-        <div class="form-group mt-3">
-          <label for="userEmail">E-mail</label>
-          <input class="form-control mt-2 text-center" formControlName="userEmail" />
-          <div class="invalid-feedback"
-              *ngIf="newUserForm.get('userEmail')?.errors?.required
-              && newUserForm.get('userEmail')?.touched">E-mail obrigatório
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="userEmail">E-mail</label>
+            <input class="form-control mt-2 text-center" formControlName="userEmail" />
+            <div class="invalid-feedback"
+                *ngIf="newUserForm.get('userEmail')?.errors?.required
+                && newUserForm.get('userEmail')?.touched">E-mail obrigatório
+            </div>
+            <div class="invalid-feedback"
+                *ngIf="newUserForm.get('userEmail')?.errors?.email
+                && newUserForm.get('userEmail')?.touched">E-mail no formato incorreto
+            </div>
           </div>
-          <div class="invalid-feedback"
-              *ngIf="newUserForm.get('userEmail')?.errors?.email
-              && newUserForm.get('userEmail')?.touched">E-mail no formato incorreto
+        </div>
+        <div class="col mt-3">
+          <div class="form-group">
+            <label for="userPassword">Senha</label>
+            <input type="password"
+                   class="form-control mt-2 text-center"
+                   formControlName="userPassword"/>
+                  <div class="invalid-feedback"
+                  *ngIf="newUserForm.get('userPassword')?.errors?.required
+                  && newUserForm.get('userPassword')?.touched">Senha obrigatória
+                  </div>
+                  <div class="invalid-feedback"
+                  *ngIf="newUserForm.errors?.passwordEqualUser">
+                  Senha deve ser diferente do usuário
+                  </div>
+          </div>
+        </div>
+        <div class="col mt-3">
+          <div class="form-group">
+            <label for="userPasswordConfirm">Confirme a senha</label>
+            <input type="password"
+                   class="form-control mt-2 text-center"
+                   formControlName="userPasswordConfirm"/>
+                  <div class="invalid-feedback"
+                  *ngIf="newUserForm.errors?.passwordEqualConfirmPass">
+                  A confirmação da senha deve ter o mesmo valor do campo senha
+                  </div>
           </div>
         </div>
 
-        <div class="form-group mt-3">
-          <label for="userPassword">Senha</label>
-          <input type="password"
-                 class="form-control mt-2 text-center"
-                 formControlName="userPassword"/>
-                <div class="invalid-feedback"
-                *ngIf="newUserForm.get('userPassword')?.errors?.required
-                && newUserForm.get('userPassword')?.touched">{{validationMessage}}
-                </div>
-        </div>
+      </div>
 
-        <div class="buttons-wrapper mt-4">
-          <button class="btn btn-secondary btn-block" type="reset">Limpar</button>
-          <button class="btn btn-primary btn-block">Cadastrar usuário</button>
-        </div>
+      <div class="buttons-wrapper mt-5">
+        <button class="btn btn-secondary btn-block" type="reset">Limpar</button>
+        <button class="btn btn-primary btn-block">Cadastrar usuário</button>
+      </div>
 
     </form>
 

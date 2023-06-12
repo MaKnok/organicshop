@@ -18,7 +18,7 @@ export class NewUserService {
     return this.authService.registerUser(newUser);
   }
 
-  verifyExistingUser(userName: string) {
-    return this.http.get(`${API}/users` + '?userName=' + userName);
+  verifyExistingUser(userName: string): Observable<User[]> {
+    return this.authService.getByUserName(userName);
   }
 }
