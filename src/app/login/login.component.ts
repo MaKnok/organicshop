@@ -41,6 +41,8 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/home']);
             this.clearValidationMessage();
             this.clearFields();
+            this.subscription.unsubscribe();
+            console.log('unsubscribe done!');
           } else {
             this.validationMessage = 'Senha invalida!';
             return;
@@ -65,8 +67,8 @@ export class LoginComponent implements OnInit {
     this.password = '';
   }
 
-  ngOnDestroy(): void {
+  /*ngOnDestroy(): void {
     this.subscription.unsubscribe();
     console.log('unsubscribe done!');
-  }
+  }*/
 }

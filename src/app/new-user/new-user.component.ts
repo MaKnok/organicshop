@@ -43,7 +43,18 @@ export class NewUserComponent implements OnInit {
 
   public registerNewUser() {
     if (this.newUserForm.valid) {
-      const newUser = this.newUserForm.getRawValue() as NewUser;
+      //const newUser = this.newUserForm.getRawValue() as NewUser;
+      const username = this.newUserForm.get('userName').value;
+      const useremail = this.newUserForm.get('userEmail').value;
+      const userpassword = this.newUserForm.get('userPassword').value;
+
+      let newUser = {
+        userName: username,
+        userEmail: useremail,
+        userPassword: userpassword,
+      } as NewUser;
+      console.log(newUser);
+
       this.newUserService.registerNewUser(newUser).subscribe({
         next: () => {
           this.router.navigate(['']);
