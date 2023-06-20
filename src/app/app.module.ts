@@ -3,17 +3,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TopBarComponent } from './top-bar/top-bar.component';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { AppRoutingModule } from './app-routing.module';
 import { ManageItemsModule } from './manage-items/manage-items.module';
-import { FooterComponent } from './footer/footer.component';
+import { FooterModule } from './footer/footer.module';
+import { TopBarModule } from './top-bar/top-bar.module';
 
 registerLocaleData(localePt, 'pt');
 
 @NgModule({
-  declarations: [AppComponent, TopBarComponent, FooterComponent],
+  declarations: [AppComponent],
   imports: [
     AppRoutingModule,
     BrowserModule,
@@ -21,6 +21,8 @@ registerLocaleData(localePt, 'pt');
     HttpClientModule,
     ManageItemsModule,
     ReactiveFormsModule,
+    TopBarModule,
+    FooterModule,
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },

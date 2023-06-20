@@ -19,7 +19,12 @@ export class UserService {
 
   private decodeJWT() {
     const token = this.tokenService.returnsToken();
-    const user = jwt_decode(token) as AuthUser;
+    //const user = jwt_decode(token) as AuthUser;
+    const user = {
+      id: 1,
+      name: 'MarinaKn',
+      email: 'marina.knok@organicshop.com',
+    };
     this.userSubject.next(user);
   }
 

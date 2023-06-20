@@ -66,9 +66,4 @@ export class LoginComponent implements OnInit {
     this.user = '';
     this.password = '';
   }
-
-  /*ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-    console.log('unsubscribe done!');
-  }*/
 }

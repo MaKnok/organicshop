@@ -67,7 +67,9 @@ body {
 }
 
 a{
-  cursor:pointer;
+  cursor: pointer;
+  text-decoration: none !important;
+  color: $brown;
 }
 
 .form-group{

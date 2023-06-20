@@ -1,6 +1,6 @@
 <div [ngClass]="{'login-bg-image':this.router.url === '/login'}">
   <app-top-bar></app-top-bar>
-  <main>
+  <main [ngClass]="{'login-main':this.router.url === '/login'}">
     <router-outlet></router-outlet>
   </main>
   <app-footer></app-footer>

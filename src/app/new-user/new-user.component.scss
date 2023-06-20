@@ -1,20 +1,14 @@
 form{
   background-color: var(--transparent-green);
-  padding: 1.5em;
+  padding: 0.5rem 1.5rem 1.5rem 1.5em;
   border-radius: 1em;
 
   input.form-control{
     background-color: var(--white) !important;
   }
 
-  .buttons-wrapper{
-    display:flex;
-    flex-direction: row;
-    justify-content: space-between;
-
-    button{
-      width: 48%;
-    }
+  button{
+    width: 100%;
   }
 
 }
@@ -28,5 +22,11 @@ p > a{
 @media only screen and (min-width: 600px) {
   .container {
     max-width: 50rem;
+  }
+}
+
+@media only screen and (max-width: 990px) {
+  .btn.btn-primary.btn-block {
+    margin-top: 1rem;
   }
 }

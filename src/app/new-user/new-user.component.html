@@ -5,8 +5,8 @@
 
     <form class="form mt-4" [formGroup]="newUserForm" (submit)="registerNewUser()">
 
-      <div class="row row-cols-2">
-        <div class="col">
+      <div class="row">
+        <div class="col-lg-6 mt-3">
           <div class="form-group">
             <label for="userName">Usuário</label>
             <input
@@ -24,7 +24,7 @@
         </div>
 
         </div>
-        <div class="col">
+        <div class="col-lg-6 mt-3">
           <div class="form-group">
             <label for="userEmail">E-mail</label>
             <input class="form-control mt-2 text-center" formControlName="userEmail" />
@@ -38,7 +38,10 @@
             </div>
           </div>
         </div>
-        <div class="col mt-3">
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6 mt-3">
           <div class="form-group">
             <label for="userPassword">Senha</label>
             <input type="password"
@@ -54,7 +57,7 @@
                   </div>
           </div>
         </div>
-        <div class="col mt-3">
+        <div class="col-lg-6 mt-3">
           <div class="form-group">
             <label for="userPasswordConfirm">Confirme a senha</label>
             <input type="password"
@@ -69,9 +72,13 @@
 
       </div>
 
-      <div class="buttons-wrapper mt-5">
-        <button class="btn btn-secondary btn-block" type="reset">Limpar</button>
-        <button class="btn btn-primary btn-block">Cadastrar usuário</button>
+      <div class="row mt-4">
+        <div class="col-lg-6">
+          <button class="btn btn-secondary btn-block" type="reset">Limpar</button>
+        </div>
+        <div class="col-lg-6">
+          <button class="btn btn-primary btn-block">Cadastrar usuário</button>
+        </div>
       </div>
 
     </form>
