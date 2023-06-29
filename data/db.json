@@ -1,5 +1,49 @@
 {
-  "inventoryItems": [
+  "users": [
+    {
+      "id": "1",
+      "userName": "MarinaKn",
+      "userEmail": "marina.knok@organicshop.com",
+      "userPassword": "Jkn2809@2023"
+    },
+    {
+      "id": "2",
+      "userName": "ThiagoSn",
+      "userEmail": "thiago.serena@organicshop.com",
+      "userPassword": "Adn0612@2023"
+    },
+    {
+      "userName": "Kyle",
+      "userEmail": "kyle@gmail.com",
+      "userPassword": "9900",
+      "id": "N-ehYra"
+    },
+    {
+      "userName": "Mila Gianne",
+      "userEmail": "mgianne@gmail.com",
+      "userPassword": "gn88",
+      "id": "8X_eFFi"
+    }
+  ],
+  "categories": [
+    {
+      "id": "cat-food",
+      "categoryName": "Alimentação"
+    },
+    {
+      "id": "cat-health",
+      "categoryName": "Saúde e higiene"
+    },
+    {
+      "id": "cat-sup",
+      "categoryName": "Suplementos"
+    },
+    {
+      "id": "cat-beauty",
+      "categoryName": "Beleza e estética"
+    }
+  ],
+  "cat-food":[
     {
       "id": "1",
       "itemPrice": 3.5,
@@ -43,30 +87,73 @@
       "id": "VBGIEgb"
     }
   ],
-  "users": [
+  "cat-health":[
     {
       "id": "1",
-      "userName": "MarinaKn",
-      "userEmail": "marina.knok@organicshop.com",
-      "userPassword": "Jkn2809@2023"
+      "itemPrice": 5.6,
+      "itemName": "Algodão Bolas Vegan Style 100g",
+      "itemType": "unit",
+      "date": "2020-11-04T16:30:10.710Z"
     },
     {
       "id": "2",
-      "userName": "ThiagoSn",
-      "userEmail": "thiago.serena@organicshop.com",
-      "userPassword": "Adn0612@2023"
+      "itemPrice": 9.8,
+      "itemName": "Creme Hidratante Nature Mood 200ml",
+      "itemType": "unit",
+      "date": "2020-11-04T21:24:10.710Z"
     },
     {
-      "userName": "Kyle",
-      "userEmail": "kyle@gmail.com",
-      "userPassword": "9900",
-      "id": "N-ehYra"
+      "id": "3",
+      "itemPrice": 20.4,
+      "itemName": "Sabonete Green Dream 5 bar. 90g",
+      "itemType": "unity",
+      "date": "2020-11-05T21:14:10.710Z"
+    }
+  ],
+  "cat-sup":[
+    {
+      "id": "1",
+      "itemPrice": 45.6,
+      "itemName": "Cúrcuma 30 Cápsulas Ocean Drop",
+      "itemType": "unit",
+      "date": "2020-11-04T16:30:10.710Z"
     },
     {
-      "userName": "Mila Gianne",
-      "userEmail": "mgianne@gmail.com",
-      "userPassword": "gn88",
-      "id": "8X_eFFi"
+      "id": "2",
+      "itemPrice": 12.8,
+      "itemName": "Barra de Proteína Mãe Terra 40g.",
+      "itemType": "unit",
+      "date": "2020-11-04T21:24:10.710Z"
+    },
+    {
+      "id": "3",
+      "itemPrice": 115.70,
+      "itemName": "Fórmula da Beleza Cranberry Gaab Wellness",
+      "itemType": "unity",
+      "date": "2020-11-05T21:14:10.710Z"
+    }
+  ],
+  "cat-beauty":[
+    {
+      "id": "1",
+      "itemPrice": 76.4,
+      "itemName": "Kit Sombras True Colors Alquimist 10 cores",
+      "itemType": "unit",
+      "date": "2020-11-04T16:30:10.710Z"
+    },
+    {
+      "id": "2",
+      "itemPrice": 134.90,
+      "itemName": "Kit Rotina Facial Basics Sallve",
+      "itemType": "unit",
+      "date": "2020-11-04T21:24:10.710Z"
+    },
+    {
+      "id": "3",
+      "itemPrice": 115.70,
+      "itemName": "Batom Nude Faces GE Beauty",
+      "itemType": "unit",
+      "date": "2020-11-05T21:14:10.710Z"
     }
   ]
 }

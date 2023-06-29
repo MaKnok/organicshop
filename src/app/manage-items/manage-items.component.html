@@ -1,8 +1,21 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-12 mb-2">
-      <a [routerLink]="['manage-item']">Nome da Categoria</a>
-      <router-outlet></router-outlet>
+  <div class="row mt-4">
+    <div class="col-lg-2">
+      <button type="button" class="btn btn-primary" routerLink="/home">
+        <i class="fa fa-arrow-left"></i>
+      </button>
     </div>
+    <div class="col-lg-10">
+      <button *ngFor="let category of categories$;"
+              type="button"
+              class="btn btn-primary ml-3"
+              (click)="gotoCategory(category)"
+              >
+        <a>{{category.categoryName}}</a>
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <router-outlet></router-outlet>
   </div>
 </div>
