@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/models/category';
 import { ManageItemsService } from './manage-items.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 
 @Component({
@@ -11,10 +11,13 @@ import { Observable, Subscription } from 'rxjs';
 })
 export class ManageItemsComponent implements OnInit {
   categories$: Observable<Category[]>;
+  categoryId: string = '';
   subscription: Subscription;
+  faClass: string = '';
 
   constructor(
     private manageItemsService: ManageItemsService,
+    private route: ActivatedRoute,
     private router: Router
   ) {}
 
@@ -33,5 +36,12 @@ export class ManageItemsComponent implements OnInit {
 
   gotoCategory(category: Category) {
     this.router.navigate(['/manage-item', { id: category.id }]);
+    this.manageItemsService.setChosenCategory(this.categoryId); 
   }
+
+  ngOnDestroy(): void{
+    this.subscription.unsubscribe();
+    console.log("Manage items unsubscribed");
+  }
+
 }

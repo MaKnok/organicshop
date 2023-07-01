@@ -25,9 +25,12 @@ export class ManageItemComponent implements OnInit {
     this.provideList();
   }
 
-  ngDoCheck() {
+  ngDoCheck(){
+    let id = this.categoryId;
     this.checkCategory();
-    this.provideList();
+    if (id !== this.categoryId){
+      this.provideList();
+    } 
   }
 
   private checkCategory() {

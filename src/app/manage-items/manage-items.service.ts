@@ -12,6 +12,7 @@ export class ManageItemsService {
   constructor(private httpClient: HttpClient) {}
 
   private API: string = environment.apiURL;
+  private chosenCategory:string = '';
 
   getCategories(): Observable<any> {
     return this.httpClient.get<Category[]>(this.API + '/categories').pipe(
@@ -20,5 +21,13 @@ export class ManageItemsService {
       catchError((err) => throwError(() => new Error(err))),
       retry(3)
     );
+  }
+
+  setChosenCategory(value:string):void{
+    this.chosenCategory = value;
+  }
+
+  getChosenCategory():string{
+    return this.chosenCategory;
   }
 }
