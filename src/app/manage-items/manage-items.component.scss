@@ -1,3 +1,59 @@
+
+.btn.btn-primary{
+  height: 2.5em !important;
+  padding: 0 1em;
+
+  .fa.fa-arrow-left{
+    font: normal normal normal 24px/1 FontAwesome;
+  }
+}
+
+/*Buttons colors*/
+
+.food-button{
+  background-color: var(--orange);
+  &:hover,
+  &:focus,
+  &:active{
+    background-color: var(--active-orange) !important;
+  }
+}
+
+.health-button{
+  background-color: var(--pastel-green);
+  &:hover,
+  &:focus,
+  &:active{
+    background-color: var(--active-green) !important;
+  }
+}
+
+.sup-button{
+  background-color: var(--yellow);
+  &:hover,
+  &:focus,
+  &:active{
+    background-color: var(--active-yellow) !important;
+  }
+}
+
+.beauty-button{
+  background-color: var(--pastel-dark-green);
+  &:hover,
+  &:focus,
+  &:active{
+    background-color: var(--active-dark-green) !important;
+  }
+}
+
+/*Buttons colors*/
+
 .ml-3{
   margin-left: 1em;
+
+  .fa{
+    font: normal normal normal 24px/1 FontAwesome;
+    margin-right: 0.5em;
+  }
+
 }

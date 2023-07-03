@@ -7,7 +7,7 @@
       <th class="tabela__cabecalho__conteudo">Nome do Item</th>
       <th class="tabela__cabecalho__conteudo">Preço</th>
     </thead>
-    <tbody>
+    <tbody *ngIf="inventoryItems$; else emptyList">
       <tr class="tabela__linha"  *ngFor="let item of inventoryItems$">
         <td class="tabela__conteudo">{{ item?.date | date:"short" }}</td>
         <td class="tabela__conteudo">{{ item?.itemName }}</td>

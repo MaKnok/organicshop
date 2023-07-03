@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Category } from 'src/app/models/category';
 import { ManageItemsService } from './manage-items.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -10,10 +10,23 @@ import { Observable, Subscription } from 'rxjs';
   styleUrls: ['./manage-items.component.scss'],
 })
 export class ManageItemsComponent implements OnInit {
+
+  @ViewChild('categoryButton', { static: false })
+
+  set categoryButton(element: ElementRef<HTMLInputElement>) {
+    if(element) {
+      element.nativeElement.focus();
+    }
+  }
+  
   categories$: Observable<Category[]>;
   categoryId: string = '';
   subscription: Subscription;
-  faClass: string = '';
+
+  FOOD_CAT: string = 'cat-food';
+  HEALTH_CAT: string = 'cat-health';
+  SUP_CAT: string = 'cat-sup';
+  BEAUTY_CAT: string = 'cat-beauty';
 
   constructor(
     private manageItemsService: ManageItemsService,
@@ -26,6 +39,7 @@ export class ManageItemsComponent implements OnInit {
       next: (res) => {
         this.categories$ = res;
         console.log('Categories', res);
+        this.gotoCategory(res[0]);
       },
       error: (error) => {
         console.log('There was an error in Categories! >>', error);
