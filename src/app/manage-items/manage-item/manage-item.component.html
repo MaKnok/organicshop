@@ -1,23 +1,66 @@
 
 <section class="container">
-  <a [routerLink]="['/add-update-item']">Adicionar</a>
-  <table class="tabela">
-    <thead class="tabela__cabecalho">
-      <th class="tabela__cabecalho__conteudo">Data</th>
-      <th class="tabela__cabecalho__conteudo">Nome do Item</th>
-      <th class="tabela__cabecalho__conteudo">Preço</th>
-    </thead>
-    <tbody *ngIf="inventoryItems$; else emptyList">
-      <tr class="tabela__linha"  *ngFor="let item of inventoryItems$">
-        <td class="tabela__conteudo">{{ item?.date | date:"short" }}</td>
-        <td class="tabela__conteudo">{{ item?.itemName }}</td>
-        <td class="tabela__conteudo">{{ item?.itemPrice | currency }}</td>
-      </tr>
-    </tbody>
-  </table>
-  <ng-template #emptyList>
-    <p>Nenhuma operação cadastrada</p>
-  </ng-template>
+  <div class="row mt-4">
+    <div class="col-lg-3">
+      <form class="form-group">
+        <div class="input-group mb-2">
+          <input type="text" class="form-control" id="searchItem" placeholder="Busca">
+        </div>
+        <div>
+          <button type="button" class="btn btn-primary">
+            <i class="fa fa-search"></i>
+            <a class="label-button">Buscar item</a>
+          </button>
+        </div>
+      </form>
+
+      <div class="buttons-wrapper mt-5">
+        <div class="edit-item">
+          <button type="button" 
+                class="btn btn-success mt-3" 
+                [routerLink]="['/add-update-item']">
+                <i class="fa fa-plus"></i>
+          </button>
+        </div>
+        <div class="edit-item">
+          <button type="button" 
+                class="btn btn-warning mt-3" 
+                [routerLink]="['/add-update-item']">
+                <i class="fa fa-pencil"></i>
+          </button>
+        </div>
+        <div class="edit-item">
+          <button type="button" 
+                class="btn btn-danger mt-3" 
+                [routerLink]="['/add-update-item']">
+                <i class="fa fa-trash"></i>
+          </button>
+        </div>
+      </div>
+     
+    </div>
+    <div class="col-lg-9">
+      <div class="table-wrapper">
+        <table class="table-style">
+          <thead class="table-style__header">
+            <th class="table-style__header__content">Data</th>
+            <th class="table-style__header__content">Nome do Item</th>
+            <th class="table-style__header__content">Preço</th>
+          </thead>
+          <tbody *ngIf="inventoryItems$; else emptyList">
+            <tr class="table-style__row-style"  *ngFor="let item of inventoryItems$">
+              <td class="table-style__row-style__content">{{ item?.date | date:"short" }}</td>
+              <td class="table-style__row-style__content">{{ item?.itemName }}</td>
+              <td class="table-style__row-style__content">{{ item?.itemPrice | currency }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <ng-template #emptyList>
+        <p>Nenhuma operação cadastrada</p>
+      </ng-template>
+    </div>
+  </div>
 </section>
 
 

@@ -91,6 +91,10 @@ a{
 button{
   font-size: 14pt !important;
   height: 2em !important;
+
+  .fa{
+    color: $white;
+  }
 }
 
 .btn.btn-primary {
@@ -116,6 +120,45 @@ button{
   }
   &:disabled{
     background-color: $pastel-green;
+  }
+}
+
+.btn.btn-success{
+  background-color: $green;
+  border: 0;
+  &:hover,
+  &:active,
+  &:focus{
+    background-color: $active-green !important;
+  }
+  &:disabled{
+    background-color: $pastel-green;
+  }
+}
+
+.btn.btn-warning{
+  background-color: $yellow;
+  border: 0;
+  &:hover,
+  &:active,
+  &:focus{
+    background-color: $active-yellow !important;
+  }
+  &:disabled{
+    background-color: $pastel-yellow;
+  }
+}
+
+.btn.btn-danger{
+  background-color: $orange;
+  border: 0;
+  &:hover,
+  &:active,
+  &:focus{
+    background-color: $active-orange !important;
+  }
+  &:disabled{
+    background-color: $pastel-orange;
   }
 }
 

@@ -1,11 +1,23 @@
 
-.btn.btn-primary{
-  height: 2.5em !important;
-  padding: 0 1em;
+.col-lg-12{
 
-  .fa.fa-arrow-left{
-    font: normal normal normal 24px/1 FontAwesome;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .btn.btn-primary{
+    height: 2.5em !important;
+    padding: 0 1em;
+  
+    .fa.fa-arrow-left{
+      font: normal normal normal 24px/1 FontAwesome;
+    }
+  
+    .category-name{
+      color:var(--white);
+    }
   }
+
 }
 
 /*Buttons colors*/
@@ -57,3 +69,42 @@
   }
 
 }
+
+@media only screen and (min-width: 990px) {
+  
+}
+
+@media only screen and (max-width: 820px) {
+  .container{
+    padding: 0 20px 0 12px;
+
+    .col-lg-12{
+      margin-top: 1em;
+
+      .cat-buttons{
+        margin-left: 0.85em;
+        .btn.btn-primary{
+          width: 3em !important;
+        }
+      }
+    
+      .ml-3{
+        margin-left: 0.5em;
+
+        &:first-child{
+          margin-left: 0;
+        }
+
+        .category-name{
+          display:none;
+        }
+
+        .fa{
+          margin-right: 0;
+        }
+
+      }
+    }
+  }
+}
+
