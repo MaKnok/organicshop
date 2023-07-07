@@ -6,11 +6,11 @@
           <div>
             <a class="navbar-brand"><img src="assets/img/organic-shop.svg" class="logo-img" alt="organic-shop"></a>
           </div>
-          <div>
-            <i class="fa fa-user mr-1"></i>
-            <a class="mr-2">{{ user.name }}</a>
-            <i class="fa fa-sign-out mr-05" aria-hidden="true" (click)="logout()"></i>
-            <a class="logout" (click)="logout()">Sair</a>
+          <div class="user-wrapper">
+              <i class="fa fa-user mr-1"></i>
+              <a class="mr-2">{{ user.name }}</a>
+              <i class="fa fa-sign-out mr-05" aria-hidden="true" (click)="logout()"></i>
+              <a class="logout" (click)="logout()">Sair</a>
           </div>
         </div>
     </div>

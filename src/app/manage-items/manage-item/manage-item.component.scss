@@ -66,11 +66,7 @@
   }
 }
 
-@media only screen and (min-width: 990px) {
-  
-}
-
-@media only screen and (max-width: 820px) {
+@media only screen and (max-width: 990px) {
 
   .row{
 
@@ -106,13 +102,13 @@
     margin-top: 1em;
 
     .table-wrapper{
-      height: 40rem;
+      height: 30rem;
     }
   }
  
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 600px) {
 
   .row{
 
@@ -137,7 +133,7 @@
     margin-top: 1em;
 
     .table-wrapper{
-      height: 25rem;
+      height: 18rem;
     }
   }
  
