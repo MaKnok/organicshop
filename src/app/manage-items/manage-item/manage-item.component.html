@@ -2,12 +2,18 @@
 <section class="container">
   <div class="row mt-4">
     <div class="col-lg-3">
-      <form class="form-group">
+      <form class="form-group" [formGroup]="searchItemForm" (submit)="searchItem()">
         <div class="input-group mb-2">
-          <input type="text" class="form-control" id="searchItem" placeholder="Busca">
+          <input type="text" 
+                 class="form-control" 
+                 id="searchValue" 
+                 placeholder="Busca" 
+                 name="searchValue" 
+                 formControlName="searchValue">
         </div>
+        <div class="invalid-feedback mb-3" *ngIf="searchItemForm.get('searchValue')?.errors?.required && searchItemForm.get('searchValue')?.touched">Digite o valor da busca.</div>
         <div>
-          <button type="button" class="btn btn-primary">
+          <button type="submit" class="btn btn-primary">
             <i class="fa fa-search"></i>
             <a class="label-button">Buscar item</a>
           </button>
@@ -47,12 +53,12 @@
             <th class="table-style__header__content">Nome do Item</th>
             <th class="table-style__header__content">Preço</th>
           </thead>
-          <tbody *ngIf="inventoryItems$; else emptyList">
-            <tr class="table-style__row-style"  *ngFor="let item of inventoryItems$">
-              <td class="table-style__row-style__content">{{ item?.date | date:"short" }}</td>
-              <td class="table-style__row-style__content">{{ item?.itemName }}</td>
-              <td class="table-style__row-style__content">{{ item?.itemPrice | currency }}</td>
-            </tr>
+          <tbody *ngIf="inventoryItems$ !== emptyList; else emptyList">
+              <tr class="table-style__row-style"  *ngFor="let item of inventoryItems$" (click)="selectItem(item?.id)">
+                <td class="table-style__row-style__content" [ngClass]="{'table-style__row-style__content__selected-content': item?.id === this.selectedItemId}">{{ item?.date | date:"short" }}</td>
+                <td class="table-style__row-style__content" [ngClass]="{'table-style__row-style__content__selected-content': item?.id === this.selectedItemId}">{{ item?.itemName }}</td>
+                <td class="table-style__row-style__content" [ngClass]="{'table-style__row-style__content__selected-content': item?.id === this.selectedItemId}">{{ item?.itemPrice | currency }}</td>
+              </tr>
           </tbody>
         </table>
       </div>

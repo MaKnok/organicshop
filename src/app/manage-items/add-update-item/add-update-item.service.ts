@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError, map, retry, tap, throwError } from 'rxjs';
 import { InventoryItem } from '../../models/inventory-item.model';
 import { environment } from 'src/environments/environment';
 
@@ -21,6 +21,17 @@ export class AddUpdateItemService {
 
   allItems(id: string): Observable<any> {
     return this.httpClient.get<InventoryItem[]>(this.url + '/' + id);
+  }
+
+  searchItems(id: string, searchedValue:any): Observable<any> {
+    console.log('Searched value >>', searchedValue);
+    return this.httpClient.get<InventoryItem[]>(this.url + '/' + id).pipe(
+      map((items) => items.filter((item) => item.itemName.toUpperCase().
+                                            includes(searchedValue.searchValue.toUpperCase()))),
+      tap((items) => console.log(items)),
+      catchError((err) => throwError(() => new Error(err))),
+      retry(3)
+    );;
   }
 
   addItem(inventoryItem: InventoryItem): Observable<InventoryItem> {
