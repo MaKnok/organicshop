@@ -11,13 +11,46 @@ export class AddUpdateItemService {
   private inventoryItem: any[];
   private url: string = environment.apiURL;
 
+  private categoryId: string = '';
+  private categoryLabel: string = '';
+  private action:string = '';
+
   constructor(private httpClient: HttpClient) {
     this.inventoryItem = [];
+  }
+
+  /*GETTERS AND SETTERS*/
+
+  public getCatLabel():string{
+    return this.categoryLabel;
+  }
+
+  public setCatLabel(label:string){
+    this.categoryLabel = label; 
+  }
+
+  public getAction():string{
+    return this.action;
+  }
+
+  public setAction(action:string){
+    this.action = action; 
+  }
+
+  public getCatId():string{
+    return this.categoryId;
+  }
+
+  public setCatId(catId:string){
+    this.categoryId = catId; 
   }
 
   get inventoryItems() {
     return this.inventoryItem;
   }
+
+  
+  /*HTTP SERVICES*/
 
   allItems(id: string): Observable<any> {
     return this.httpClient.get<InventoryItem[]>(this.url + '/' + id);
@@ -48,4 +81,15 @@ export class AddUpdateItemService {
       `http://localhost:3000/inventoryItems/exists/${itemName}`
     );
   }
+
+  
+  /*CLEAR ENVIRONMENT*/
+
+  clearAddUpdateEnvironment(){
+    this.inventoryItem = [];
+    this.categoryId = '';
+    this.categoryLabel = '';
+    this.action = '';
+  }
+
 }

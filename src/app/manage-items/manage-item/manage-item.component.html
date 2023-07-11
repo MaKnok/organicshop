@@ -24,21 +24,21 @@
         <div class="edit-item">
           <button type="button" 
                 class="btn btn-success mt-3" 
-                [routerLink]="['/add-update-item']">
+                (click)="addItem(this.categoryId)">
                 <i class="fa fa-plus"></i>
           </button>
         </div>
         <div class="edit-item">
           <button type="button" 
                 class="btn btn-warning mt-3" 
-                [routerLink]="['/add-update-item']">
+                (click)="editItem(this.categoryId, this.selectedItemId)">
                 <i class="fa fa-pencil"></i>
           </button>
         </div>
         <div class="edit-item">
           <button type="button" 
                 class="btn btn-danger mt-3" 
-                [routerLink]="['/add-update-item']">
+                (click)="deleteItem(this.categoryId, this.selectedItemId)">
                 <i class="fa fa-trash"></i>
           </button>
         </div>
@@ -53,7 +53,7 @@
             <th class="table-style__header__content">Nome do Item</th>
             <th class="table-style__header__content">Preço</th>
           </thead>
-          <tbody *ngIf="inventoryItems$ !== emptyList; else emptyList">
+          <tbody *ngIf="inventoryItems$ !== [] && inventoryItems$ !== undefined; else emptyList">
               <tr class="table-style__row-style"  *ngFor="let item of inventoryItems$" (click)="selectItem(item?.id)">
                 <td class="table-style__row-style__content" [ngClass]="{'table-style__row-style__content__selected-content': item?.id === this.selectedItemId}">{{ item?.date | date:"short" }}</td>
                 <td class="table-style__row-style__content" [ngClass]="{'table-style__row-style__content__selected-content': item?.id === this.selectedItemId}">{{ item?.itemName }}</td>

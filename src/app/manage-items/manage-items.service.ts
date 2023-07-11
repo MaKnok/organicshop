@@ -14,6 +14,11 @@ export class ManageItemsService {
   private API: string = environment.apiURL;
   private chosenCategory:string = '';
 
+  FOOD_CAT: string = 'cat-food';
+  HEALTH_CAT: string = 'cat-health';
+  SUP_CAT: string = 'cat-sup';
+  BEAUTY_CAT: string = 'cat-beauty';
+
   getCategories(): Observable<any> {
     return this.httpClient.get<Category[]>(this.API + '/categories').pipe(
       map((categories) => categories.flatMap((cat) => cat)),

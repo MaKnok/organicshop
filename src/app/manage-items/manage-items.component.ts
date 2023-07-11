@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Category } from 'src/app/models/category';
 import { ManageItemsService } from './manage-items.service';
+import { AddUpdateItemService } from './add-update-item/add-update-item.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 
@@ -23,13 +24,10 @@ export class ManageItemsComponent implements OnInit {
   categoryId: string = '';
   subscription: Subscription;
 
-  FOOD_CAT: string = 'cat-food';
-  HEALTH_CAT: string = 'cat-health';
-  SUP_CAT: string = 'cat-sup';
-  BEAUTY_CAT: string = 'cat-beauty';
 
   constructor(
-    private manageItemsService: ManageItemsService,
+    public manageItemsService: ManageItemsService,
+    private addUpdateItemService: AddUpdateItemService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
@@ -51,6 +49,8 @@ export class ManageItemsComponent implements OnInit {
   gotoCategory(category: Category) {
     this.router.navigate(['/manage-item', { id: category.id }]);
     this.manageItemsService.setChosenCategory(this.categoryId); 
+    this.addUpdateItemService.setCatId(this.categoryId);
+    this.addUpdateItemService.setCatLabel(category.categoryName);
   }
 
   ngOnDestroy(): void{

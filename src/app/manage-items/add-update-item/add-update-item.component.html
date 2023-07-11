@@ -1,40 +1,105 @@
 <section class="container">
 
-  <form class="formulario" [formGroup]="newItemForm" (submit)="addItem()">
-      <h2 class="formulario_titulo">Adicionar Itens</h2>
+  <form class="form mt-4" [formGroup]="newItemForm" (submit)="addItem()">
 
-      <div class="form-field">
-        <label class="form-field_label" for="itemName">Nome do Item</label>
-        <input class="form-field_input" id="itemName" type="text" name="itemName" formControlName="itemName">
-        <div *ngIf="newItemForm.get('itemName')?.errors?.required && newItemForm.get('itemName')?.touched">Digite o nome do novo item.</div>
-        <div *ngIf="newItemForm.get('itemName')?.errors?.existingItemName">Item existente!</div>
+    <div class="row mt-4">
+      <div class="category-action">
+        <i class="fa fa-cutlery" *ngIf="this.addUpdateItemService.getCatId() === this.manageItemsService.FOOD_CAT"></i>
+        <i class="fa fa-bath" *ngIf="this.addUpdateItemService.getCatId() === this.manageItemsService.HEALTH_CAT"></i>
+        <i class="fa fa-flask" *ngIf="this.addUpdateItemService.getCatId() === this.manageItemsService.SUP_CAT"></i>
+        <i class="fa fa-paint-brush" *ngIf="this.addUpdateItemService.getCatId()=== this.manageItemsService.BEAUTY_CAT"></i>
+        <h2>{{ categoryLabel }} - {{ action }}</h2>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="form-group mb-2">
+        <label for="itemName">Nome do Item</label>
+        <input class="form-control mt-2" id="itemName" 
+                                    type="text" 
+                                    name="itemName" 
+                                    formControlName="itemName">
+
+        <div *ngIf="newItemForm.get('itemName')?.errors?.required 
+                    && newItemForm.get('itemName')?.touched">
+                    Digite o nome do novo item.
+        </div>
+
+        <div *ngIf="newItemForm.get('itemName')?.errors?.existingItemName">
+            Item existente!
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-lg-3">
+        <div class="form-group mb-2">
+          <label for="itemType">Tipo</label>
+          <div class="radio-wrapper mt-2">
+            <div class="form-check">
+              <input class="form-check-input" 
+                     type="radio" 
+                     name="itemType" 
+                     id="item-type-unit" 
+                     formControlName="itemType" 
+                     value="un">
+              <label class="form-check-label" 
+                     for="item-type-unit">
+                Unitário
+              </label>
+            </div>
+            <div class="form-check ml-3">
+              <input class="form-check-input" 
+                     type="radio" 
+                     name="itemType" 
+                     id="item-type-weight" 
+                     formControlName="itemType" 
+                     value="kg">
+              <label class="form-check-label" 
+                     for="item-type-weight">
+                Pesado
+              </label>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="form-field">
-        <label class="form-field_label" for="itemPrice">Preço</label>
-        <input class="form-field_input" id="itemPrice" type="number" name="itemPrice" formControlName="itemPrice">
-        <div *ngIf="newItemForm.get('itemPrice')?.errors?.required && newItemForm.get('itemPrice')?.touched">Digite o preço do novo item.</div>
-      </div>
+      <div class="col-lg-9">
+        <div class="form-group mb-2">
+          <label for="itemPrice">Preço</label>
+          <div class="input-group mt-2 mb-3">
+            <span class="input-group-text" id="basic-addon1">R$</span>
+            <input type="text" 
+                   class="form-control" 
+                   aria-label="Username" 
+                   aria-describedby="basic-addon1">
+          </div>
 
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="itemType" id="item-type-unit" formControlName="itemType" value="un">
-        <label class="form-check-label" for="item-type-unit">
-          Unitário
-        </label>
+          <div *ngIf="newItemForm.get('itemPrice')?.errors?.required 
+                      && newItemForm.get('itemPrice')?.touched">
+                      Digite o preço do novo item.
+          </div>
       </div>
+      </div>
+    </div>
 
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="itemType" id="item-type-weight" formControlName="itemType" value="kg">
-        <label class="form-check-label" for="item-type-weight">
-          Pesado
-        </label>
+    <div class="row mt-4">
+      <div class="col-lg-6">
       </div>
+      <div class="col-lg-6">
+        <div class="row">
+          <div class="col-lg-6">
+            <button class="btn btn-secondary btn-block" type="reset">Limpar</button>
+          </div>
+          <div class="col-lg-6">
+            <button class="btn btn-primary btn-block" type="submit">Incluir</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-      <div class="botao-wrapper">
-        <button class="botao" type="reset">Limpar</button>
-        <button class="botao" type="submit">Entrar</button>
-      </div>
   </form>
+
 </section>
 
 

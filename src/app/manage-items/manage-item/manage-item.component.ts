@@ -89,4 +89,23 @@ export class ManageItemComponent implements OnInit {
     this.selectedItemId = id;
     console.log('Item Id >>', this.selectedItemId);
   }
+
+  public addItem(categoryId:string){
+    this.router.navigated = false;
+    this.router.navigate(['/add-update-item']);
+    this.addUpdateItemService.setCatId(categoryId);
+    this.addUpdateItemService.setAction('add-item');
+  }
+
+  public editItem(categoryId:string, itemId:string){
+    this.router.navigated = false;
+    this.router.navigate(['/add-update-item']);
+    this.addUpdateItemService.setCatId(categoryId);
+    this.addUpdateItemService.setAction('update-item');
+  }
+
+  public deleteItem(categoryId:string, itemId:string){
+    confirm('Deseja mesmo excluir esse item?');
+  }
+
 }
