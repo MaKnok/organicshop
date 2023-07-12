@@ -17,7 +17,7 @@ export class ItemExistsService {
         switchMap((itemName) =>
         this.addUpdateItemService.verifyExistingItem(itemName)
         ),
-        map((itemExists)=>itemExists ? {existingItemName: true} : null),
+        map((result) => result.length !== 0 ? {existingItemName: true} : null),
         first()
       );
     }

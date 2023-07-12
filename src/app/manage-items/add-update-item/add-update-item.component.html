@@ -15,17 +15,19 @@
     <div class="row mt-4">
       <div class="form-group mb-2">
         <label for="itemName">Nome do Item</label>
-        <input class="form-control mt-2" id="itemName" 
+        <input class="form-control mt-2 mb-2" id="itemName" 
                                     type="text" 
                                     name="itemName" 
                                     formControlName="itemName">
 
         <div *ngIf="newItemForm.get('itemName')?.errors?.required 
-                    && newItemForm.get('itemName')?.touched">
+                    && newItemForm.get('itemName')?.touched" 
+                    class="invalid-feedback mb-3">
                     Digite o nome do novo item.
         </div>
 
-        <div *ngIf="newItemForm.get('itemName')?.errors?.existingItemName">
+        <div *ngIf="newItemForm.get('itemName')?.errors?.existingItemName"
+              class="invalid-feedback mb-3">
             Item existente!
         </div>
       </div>
@@ -42,7 +44,9 @@
                      name="itemType" 
                      id="item-type-unit" 
                      formControlName="itemType" 
-                     value="un">
+                     value="un"
+                     [checked]="'checked'"
+                     >
               <label class="form-check-label" 
                      for="item-type-unit">
                 Unitário
@@ -68,14 +72,16 @@
         <div class="form-group mb-2">
           <label for="itemPrice">Preço</label>
           <div class="input-group mt-2 mb-3">
-            <span class="input-group-text" id="basic-addon1">R$</span>
+            <span class="input-group-text" id="item-price">R$</span>
             <input type="text" 
+                   name="itemPrice"
+                   formControlName="itemPrice" 
                    class="form-control" 
-                   aria-label="Username" 
-                   aria-describedby="basic-addon1">
+                   aria-label="item-price" 
+                   aria-describedby="item-price">
           </div>
 
-          <div *ngIf="newItemForm.get('itemPrice')?.errors?.required 
+          <div class="invalid-feedback mb-3" *ngIf="newItemForm.get('itemPrice')?.errors?.required 
                       && newItemForm.get('itemPrice')?.touched">
                       Digite o preço do novo item.
           </div>
@@ -88,10 +94,10 @@
       </div>
       <div class="col-lg-6">
         <div class="row">
-          <div class="col-lg-6">
+          <div class="col-lg-6 mt-3">
             <button class="btn btn-secondary btn-block" type="reset">Limpar</button>
           </div>
-          <div class="col-lg-6">
+          <div class="col-lg-6 mt-3">
             <button class="btn btn-primary btn-block" type="submit">Incluir</button>
           </div>
         </div>

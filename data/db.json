@@ -43,7 +43,7 @@
       "categoryName": "Beleza e estética"
     }
   ],
-  "cat-food":[
+  "cat-food": [
     {
       "id": "1",
       "itemPrice": 3.5,
@@ -85,9 +85,23 @@
       "itemType": "Pesado",
       "date": "2023-03-16T02:19:30.262Z",
       "id": "VBGIEgb"
+    },
+    {
+      "itemName": "Feijão Preto Long Life",
+      "itemPrice": "8.90",
+      "itemType": "un",
+      "date": "2023-07-12T02:41:33.560Z",
+      "id": "D--U9cw"
+    },
+    {
+      "itemName": "Condicionador Live Well Camomila 350ml",
+      "itemPrice": "14.50",
+      "itemType": "un",
+      "date": "2023-07-12T02:47:59.694Z",
+      "id": "jTdNvN2"
     }
   ],
-  "cat-health":[
+  "cat-health": [
     {
       "id": "1",
       "itemPrice": 5.6,
@@ -108,9 +122,23 @@
       "itemName": "Sabonete Green Dream 5 bar. 90g",
       "itemType": "unity",
       "date": "2020-11-05T21:14:10.710Z"
+    },
+    {
+      "itemName": "Condicionador Live Well Camomila 350ml",
+      "itemPrice": "14.50",
+      "itemType": "un",
+      "date": "2023-07-12T02:46:46.801Z",
+      "id": "bS9WQBX"
+    },
+    {
+      "itemName": "Sabonete Líquido Íntimo Femme Plus Anise 400ml",
+      "itemPrice": "25.00",
+      "itemType": "un",
+      "date": "2023-07-12T02:52:44.925Z",
+      "id": "5Y3B_1W"
     }
   ],
-  "cat-sup":[
+  "cat-sup": [
     {
       "id": "1",
       "itemPrice": 45.6,
@@ -127,13 +155,13 @@
     },
     {
       "id": "3",
-      "itemPrice": 115.70,
+      "itemPrice": 115.7,
       "itemName": "Fórmula da Beleza Cranberry Gaab Wellness",
       "itemType": "unity",
       "date": "2020-11-05T21:14:10.710Z"
     }
   ],
-  "cat-beauty":[
+  "cat-beauty": [
     {
       "id": "1",
       "itemPrice": 76.4,
@@ -143,14 +171,14 @@
     },
     {
       "id": "2",
-      "itemPrice": 134.90,
+      "itemPrice": 134.9,
       "itemName": "Kit Rotina Facial Basics Sallve",
       "itemType": "unit",
       "date": "2020-11-04T21:24:10.710Z"
     },
     {
       "id": "3",
-      "itemPrice": 115.70,
+      "itemPrice": 115.7,
       "itemName": "Batom Nude Faces GE Beauty",
       "itemType": "unit",
       "date": "2020-11-05T21:14:10.710Z"

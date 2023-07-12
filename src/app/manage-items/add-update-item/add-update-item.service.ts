@@ -69,17 +69,24 @@ export class AddUpdateItemService {
 
   addItem(inventoryItem: InventoryItem): Observable<InventoryItem> {
     this.hydrate(inventoryItem);
-    return this.httpClient.post<InventoryItem>(this.url, inventoryItem);
+    return this.httpClient.post<InventoryItem>(this.url + '/' + this.getCatId(), inventoryItem);
   }
 
   private hydrate(inventoryItem: any) {
     inventoryItem.date = new Date();
   }
 
-  verifyExistingItem(itemName: string) {
-    return this.httpClient.get(
-      `http://localhost:3000/inventoryItems/exists/${itemName}`
+  verifyExistingItem(searchedValue: string) {
+    const list = this.allItems(this.getCatId());
+    const filteredList = list.pipe(
+      map((items) => items.filter((item) => item.itemName.toUpperCase() === searchedValue.toUpperCase())),
+      tap((items) => console.log(items)),
+      catchError((err) => throwError(() => new Error(err))),
+      retry(3)
     );
+    console.log(filteredList);
+    return filteredList
+    
   }
 
   

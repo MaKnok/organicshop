@@ -86,6 +86,19 @@ a{
     border: 0;
   }
 
+  input.form-check-input{
+    background-color: $transparent-brown !important;
+    &:checked{
+      border-color: $active-brown;
+      background-color: $active-brown !important;
+    }
+  }
+
+  span.input-group-text{
+    color: $white;
+    background-color: $brown;
+  }
+
 }
 
 button{

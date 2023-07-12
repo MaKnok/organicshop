@@ -30,7 +30,9 @@ export class AddUpdateItemComponent implements OnInit{
     public addUpdateItemService:AddUpdateItemService,
     public manageItemsService: ManageItemsService,
     private formBuilder:FormBuilder,
-    private itemExistsService:ItemExistsService){
+    private itemExistsService:ItemExistsService,
+    public router: Router
+    ){
   }
 
   ngOnInit(): void {
@@ -41,7 +43,7 @@ export class AddUpdateItemComponent implements OnInit{
                 [this.itemExistsService.itemExists()]
               ],
       itemPrice:['',[Validators.required]],
-      itemType:new FormControl(this.un),
+      itemType:['un',[Validators.required]],
     })
 
     this.configureSection();
@@ -70,12 +72,16 @@ export class AddUpdateItemComponent implements OnInit{
   addItem(){
     if(this.newItemForm.valid){
       const newItem = this.newItemForm.getRawValue() as InventoryItem;
-      this.addUpdateItemService.addItem(newItem).subscribe(()=>{
-        alert('Cadastrado com sucesso!')
-      },
-      (error) =>{
-        console.log(error);
-      }
+      console.log(newItem);
+      this.addUpdateItemService.addItem(newItem).subscribe({
+        next: () => {
+          this.router.navigate(['/manage-item', { id: this.addUpdateItemService.getCatId() }]);
+        },
+        error: (error) => {
+          console.log(error);
+        },
+        complete: () => console.info('Register completed!'),
+        }
       )
     }
   }
