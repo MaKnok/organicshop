@@ -14,7 +14,7 @@ export class ManageItemComponent implements OnInit {
   inventoryItems$: Observable<InventoryItem[]>;
   subscription: Subscription;
   categoryId: string = '';
-  selectedItemId:string = '';
+  selectedItem:InventoryItem;
 
   searchItemForm!: FormGroup;
 
@@ -56,7 +56,7 @@ export class ManageItemComponent implements OnInit {
         next: (res) => {
           console.table(res);
           this.inventoryItems$ = res;
-          this.selectedItemId = res[0].id;
+          this.selectedItem.id = res[0].id;
         },
         error: (error) => {
           console.log('There was an error in Add Update List! >>', error);
@@ -85,9 +85,9 @@ export class ManageItemComponent implements OnInit {
     }
   }
 
-  public selectItem(id:string){
-    this.selectedItemId = id;
-    console.log('Item Id >>', this.selectedItemId);
+  public selectItem(item:InventoryItem ){
+    this.selectedItem = item;
+    console.log('Item Id >>', this.selectedItem);
   }
 
   public addItem(categoryId:string){
@@ -97,14 +97,14 @@ export class ManageItemComponent implements OnInit {
     this.addUpdateItemService.setAction('add-item');
   }
 
-  public editItem(categoryId:string, itemId:string){
+  public editItem(categoryId:string, itemId:InventoryItem ){
     this.router.navigated = false;
     this.router.navigate(['/add-update-item']);
     this.addUpdateItemService.setCatId(categoryId);
     this.addUpdateItemService.setAction('update-item');
   }
 
-  public deleteItem(categoryId:string, itemId:string){
+  public deleteItem(categoryId:string, itemId:InventoryItem ){
     confirm('Deseja mesmo excluir esse item?');
   }
 

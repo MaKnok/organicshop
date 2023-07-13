@@ -17,8 +17,8 @@ export class AddUpdateItemComponent implements OnInit{
   public ADD_ITEM_TITLE = 'Adicionar itens';
   public UPDATE_ITEM_TITLE = 'Atualizar item';
 
-  private ADD_ITEM: string = 'add-item';
-  private UPDATE_ITEM: string = 'update-item';
+  public ADD_ITEM: string = 'add-item';
+  public UPDATE_ITEM: string = 'update-item';
 
   public categoryLabel = '';
 
@@ -69,20 +69,24 @@ export class AddUpdateItemComponent implements OnInit{
     }
   }
 
-  addItem(){
+  addUpdateItem(){
     if(this.newItemForm.valid){
-      const newItem = this.newItemForm.getRawValue() as InventoryItem;
-      console.log(newItem);
-      this.addUpdateItemService.addItem(newItem).subscribe({
-        next: () => {
-          this.router.navigate(['/manage-item', { id: this.addUpdateItemService.getCatId() }]);
-        },
-        error: (error) => {
-          console.log(error);
-        },
-        complete: () => console.info('Register completed!'),
-        }
-      )
+      if (this.addUpdateItemService.getAction() == this.ADD_ITEM){
+        const newItem = this.newItemForm.getRawValue() as InventoryItem;
+        console.log(newItem);
+        this.addUpdateItemService.addItem(newItem).subscribe({
+          next: () => {
+            this.router.navigate(['/manage-item', { id: this.addUpdateItemService.getCatId() }]);
+          },
+          error: (error) => {
+            console.log(error);
+          },
+          complete: () => console.info('Register completed!'),
+          }
+        )
+      }else if (this.addUpdateItemService.getAction() == this.UPDATE_ITEM){
+        alert('updating item');
+      }
     }
   }
 

@@ -48,41 +48,41 @@
       "id": "1",
       "itemPrice": 3.5,
       "itemName": "Banana Nanica",
-      "itemType": "weight",
+      "itemType": "kg",
       "date": "2020-11-04T16:30:10.710Z"
     },
     {
       "id": "2",
       "itemPrice": 7.5,
       "itemName": "Arroz Integral 500g",
-      "itemType": "unit",
+      "itemType": "un",
       "date": "2020-11-04T21:24:10.710Z"
     },
     {
       "id": "3",
       "itemPrice": 10.5,
       "itemName": "Avocado",
-      "itemType": "weight",
+      "itemType": "kg",
       "date": "2020-11-05T21:14:10.710Z"
     },
     {
       "itemName": "Uva Italia",
       "itemPrice": 8.9,
-      "itemType": "unidade",
+      "itemType": "un",
       "date": "2023-03-15T02:33:24.700Z",
       "id": "nWyCkD-"
     },
     {
       "itemName": "Mexirica",
       "itemPrice": 4.5,
-      "itemType": "Pesado",
+      "itemType": "un",
       "date": "2023-03-16T01:48:00.331Z",
       "id": "RSwdzPR"
     },
     {
       "itemName": "Berinjela",
       "itemPrice": 5.6,
-      "itemType": "Pesado",
+      "itemType": "kg",
       "date": "2023-03-16T02:19:30.262Z",
       "id": "VBGIEgb"
     },
@@ -92,13 +92,6 @@
       "itemType": "un",
       "date": "2023-07-12T02:41:33.560Z",
       "id": "D--U9cw"
-    },
-    {
-      "itemName": "Condicionador Live Well Camomila 350ml",
-      "itemPrice": "14.50",
-      "itemType": "un",
-      "date": "2023-07-12T02:47:59.694Z",
-      "id": "jTdNvN2"
     }
   ],
   "cat-health": [
@@ -106,21 +99,21 @@
       "id": "1",
       "itemPrice": 5.6,
       "itemName": "Algodão Bolas Vegan Style 100g",
-      "itemType": "unit",
+      "itemType": "un",
       "date": "2020-11-04T16:30:10.710Z"
     },
     {
       "id": "2",
       "itemPrice": 9.8,
       "itemName": "Creme Hidratante Nature Mood 200ml",
-      "itemType": "unit",
+      "itemType": "un",
       "date": "2020-11-04T21:24:10.710Z"
     },
     {
       "id": "3",
       "itemPrice": 20.4,
       "itemName": "Sabonete Green Dream 5 bar. 90g",
-      "itemType": "unity",
+      "itemType": "un",
       "date": "2020-11-05T21:14:10.710Z"
     },
     {
@@ -143,21 +136,21 @@
       "id": "1",
       "itemPrice": 45.6,
       "itemName": "Cúrcuma 30 Cápsulas Ocean Drop",
-      "itemType": "unit",
+      "itemType": "un",
       "date": "2020-11-04T16:30:10.710Z"
     },
     {
       "id": "2",
       "itemPrice": 12.8,
       "itemName": "Barra de Proteína Mãe Terra 40g.",
-      "itemType": "unit",
+      "itemType": "un",
       "date": "2020-11-04T21:24:10.710Z"
     },
     {
       "id": "3",
       "itemPrice": 115.7,
       "itemName": "Fórmula da Beleza Cranberry Gaab Wellness",
-      "itemType": "unity",
+      "itemType": "un",
       "date": "2020-11-05T21:14:10.710Z"
     }
   ],
@@ -166,21 +159,21 @@
       "id": "1",
       "itemPrice": 76.4,
       "itemName": "Kit Sombras True Colors Alquimist 10 cores",
-      "itemType": "unit",
+      "itemType": "un",
       "date": "2020-11-04T16:30:10.710Z"
     },
     {
       "id": "2",
       "itemPrice": 134.9,
       "itemName": "Kit Rotina Facial Basics Sallve",
-      "itemType": "unit",
+      "itemType": "un",
       "date": "2020-11-04T21:24:10.710Z"
     },
     {
       "id": "3",
       "itemPrice": 115.7,
       "itemName": "Batom Nude Faces GE Beauty",
-      "itemType": "unit",
+      "itemType": "un",
       "date": "2020-11-05T21:14:10.710Z"
     }
   ]
