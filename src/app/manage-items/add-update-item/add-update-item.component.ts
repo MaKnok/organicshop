@@ -61,12 +61,22 @@ export class AddUpdateItemComponent implements OnInit{
 
       case(this.UPDATE_ITEM):
       this.action = this.UPDATE_ITEM_TITLE;
+      this.setUpdateRadioValues();
       break;
 
       default:
       this.action = '';
 
     }
+  }
+
+  private setUpdateRadioValues() {
+    if(this.addUpdateItemService.getSelectedItem().itemType == 'un'){
+      this.newItemForm.patchValue({itemType:'un'});
+    }else if(this.addUpdateItemService.getSelectedItem().itemType == 'kg'){
+      this.newItemForm.patchValue({itemType:'kg'});
+    }
+    
   }
 
   addUpdateItem(){

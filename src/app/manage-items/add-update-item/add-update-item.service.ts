@@ -14,12 +14,21 @@ export class AddUpdateItemService {
   private categoryId: string = '';
   private categoryLabel: string = '';
   private action:string = '';
+  private selectedItem:InventoryItem;
 
   constructor(private httpClient: HttpClient) {
     this.inventoryItem = [];
   }
 
   /*GETTERS AND SETTERS*/
+
+  public getSelectedItem():InventoryItem{
+    return this.selectedItem;
+  }
+
+  public setSelectedItem(item:InventoryItem){
+    this.selectedItem = item; 
+  }
 
   public getCatLabel():string{
     return this.categoryLabel;

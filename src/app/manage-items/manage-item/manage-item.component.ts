@@ -56,7 +56,8 @@ export class ManageItemComponent implements OnInit {
         next: (res) => {
           console.table(res);
           this.inventoryItems$ = res;
-          this.selectedItem.id = res[0].id;
+          this.selectedItem = res[0];
+          this.addUpdateItemService.setSelectedItem(res[0]);
         },
         error: (error) => {
           console.log('There was an error in Add Update List! >>', error);
@@ -87,6 +88,7 @@ export class ManageItemComponent implements OnInit {
 
   public selectItem(item:InventoryItem ){
     this.selectedItem = item;
+    this.addUpdateItemService.setSelectedItem(item);
     console.log('Item Id >>', this.selectedItem);
   }
 
