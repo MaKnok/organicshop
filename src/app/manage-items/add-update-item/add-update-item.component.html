@@ -19,14 +19,15 @@
                                     type="text" 
                                     name="itemName" 
                                     formControlName="itemName"
-                                    *ngIf="this.addUpdateItemService.getAction() == this.ADD_ITEM"
+                                    *ngIf="this.addUpdateItemService.getAction() == this.addUpdateItemService.ADD_ITEM"
                                     >
         <input class="form-control mt-2 mb-2" id="itemName" 
                                     type="text" 
                                     name="itemName" 
                                     formControlName="itemName"
                                     placeholder="{{this.addUpdateItemService.getSelectedItem().itemName}}"
-                                    *ngIf="this.addUpdateItemService.getAction() == this.UPDATE_ITEM"
+                                    value="{{this.addUpdateItemService.getSelectedItem().itemName}}"
+                                    *ngIf="this.addUpdateItemService.getAction() == this.addUpdateItemService.UPDATE_ITEM"
                                     >
 
         <div *ngIf="newItemForm.get('itemName')?.errors?.required 
@@ -35,14 +36,21 @@
                     Digite o nome do novo item.
         </div>
 
-        <div *ngIf="newItemForm.get('itemName')?.errors?.existingItemName"
+        <div *ngIf="newItemForm.get('itemName')?.errors?.existingItemName && 
+                    this.addUpdateItemService.getAction() == this.addUpdateItemService.ADD_ITEM"
               class="invalid-feedback mb-3">
             Item existente!
+        </div>
+
+        <div *ngIf="newItemForm.get('itemName')?.errors?.existingItemName && 
+                    this.addUpdateItemService.getAction() == this.addUpdateItemService.UPDATE_ITEM"
+              class="invalid-feedback mb-3">
+            Item inexistente!
         </div>
       </div>
     </div>
 
-    <div class="row mt-4" *ngIf="this.addUpdateItemService.getAction() == this.ADD_ITEM">
+    <div class="row mt-4" *ngIf="this.addUpdateItemService.getAction() == this.addUpdateItemService.ADD_ITEM">
       <div class="col-lg-3">
         <div class="form-group mb-2">
           <label for="itemType">Tipo</label>
@@ -98,7 +106,7 @@
       </div>
     </div>
 
-    <div class="row mt-4" *ngIf="this.addUpdateItemService.getAction() == this.UPDATE_ITEM">
+    <div class="row mt-4" *ngIf="this.addUpdateItemService.getAction() == this.addUpdateItemService.UPDATE_ITEM">
       <div class="col-lg-3">
         <div class="form-group mb-2">
           <label for="itemType">Tipo</label>
@@ -144,6 +152,7 @@
                    aria-label="item-price" 
                    aria-describedby="item-price"
                    placeholder="{{this.addUpdateItemService.getSelectedItem().itemPrice}}"
+                   value="{{this.addUpdateItemService.getSelectedItem().itemPrice}}"
                    >
           </div>
 
@@ -161,16 +170,16 @@
       </div>
       <div class="col-lg-6">
         <div class="row">
-          <div class="col-lg-6 mt-3" *ngIf="this.addUpdateItemService.getAction() == this.ADD_ITEM">
+          <div class="col-lg-6 mt-3" *ngIf="this.addUpdateItemService.getAction() == this.addUpdateItemService.ADD_ITEM">
             <button class="btn btn-secondary btn-block" type="reset">Limpar</button>
           </div>
-          <div class="col-lg-6 mt-3" *ngIf="this.addUpdateItemService.getAction() == this.ADD_ITEM">
+          <div class="col-lg-6 mt-3" *ngIf="this.addUpdateItemService.getAction() == this.addUpdateItemService.ADD_ITEM">
             <button class="btn btn-primary btn-block" type="submit">Incluir</button>
           </div>
-          <div class="col-lg-6 mt-3" *ngIf="this.addUpdateItemService.getAction() == this.UPDATE_ITEM">
+          <div class="col-lg-6 mt-3" *ngIf="this.addUpdateItemService.getAction() == this.addUpdateItemService.UPDATE_ITEM">
             <!--layout space-->
           </div>
-          <div class="col-lg-6 mt-3" *ngIf="this.addUpdateItemService.getAction() == this.UPDATE_ITEM">
+          <div class="col-lg-6 mt-3" *ngIf="this.addUpdateItemService.getAction() == this.addUpdateItemService.UPDATE_ITEM">
             <button class="btn btn-primary btn-block" type="submit">Atualizar</button>
           </div>
         </div>

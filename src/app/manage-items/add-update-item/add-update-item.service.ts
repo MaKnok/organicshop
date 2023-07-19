@@ -8,6 +8,10 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class AddUpdateItemService {
+
+  public ADD_ITEM: string = 'add-item';
+  public UPDATE_ITEM: string = 'update-item';
+
   private inventoryItem: any[];
   private url: string = environment.apiURL;
 
@@ -81,6 +85,16 @@ export class AddUpdateItemService {
     return this.httpClient.post<InventoryItem>(this.url + '/' + this.getCatId(), inventoryItem);
   }
 
+  updateItem(id: string | number, newUserData: any): Observable<InventoryItem>  {
+    this.hydrate(newUserData);
+    return this.httpClient.put<InventoryItem>(this.url + '/' + this.getCatId() + '/' + id, newUserData);
+  }
+
+  deleteItem(item:InventoryItem): Observable<InventoryItem> {
+    const itemId = item.id
+    return this.httpClient.delete<InventoryItem>(this.url + '/' + this.getCatId() + '/' + itemId);
+  }
+
   private hydrate(inventoryItem: any) {
     inventoryItem.date = new Date();
   }
@@ -98,7 +112,6 @@ export class AddUpdateItemService {
     
   }
 
-  
   /*CLEAR ENVIRONMENT*/
 
   clearAddUpdateEnvironment(){

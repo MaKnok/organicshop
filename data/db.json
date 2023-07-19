@@ -66,24 +66,17 @@
       "date": "2020-11-05T21:14:10.710Z"
     },
     {
-      "itemName": "Uva Italia",
-      "itemPrice": 8.9,
-      "itemType": "un",
-      "date": "2023-03-15T02:33:24.700Z",
-      "id": "nWyCkD-"
-    },
-    {
       "itemName": "Mexirica",
-      "itemPrice": 4.5,
+      "itemPrice": "3.25",
       "itemType": "kg",
-      "date": "2023-03-16T01:48:00.331Z",
+      "date": "2023-07-19T02:42:09.487Z",
       "id": "RSwdzPR"
     },
     {
-      "itemName": "Berinjela",
-      "itemPrice": 5.6,
+      "itemName": "Beringela",
+      "itemPrice": "5.70",
       "itemType": "kg",
-      "date": "2023-03-16T02:19:30.262Z",
+      "date": "2023-07-19T00:36:01.319Z",
       "id": "VBGIEgb"
     },
     {
@@ -92,6 +85,13 @@
       "itemType": "un",
       "date": "2023-07-12T02:41:33.560Z",
       "id": "D--U9cw"
+    },
+    {
+      "itemName": "Ovos Caipiras",
+      "itemPrice": "14.00",
+      "itemType": "un",
+      "date": "2023-07-19T01:59:23.018Z",
+      "id": "fIZyj8X"
     }
   ],
   "cat-health": [
@@ -110,13 +110,6 @@
       "date": "2020-11-04T21:24:10.710Z"
     },
     {
-      "id": "3",
-      "itemPrice": 20.4,
-      "itemName": "Sabonete Green Dream 5 bar. 90g",
-      "itemType": "un",
-      "date": "2020-11-05T21:14:10.710Z"
-    },
-    {
       "itemName": "Condicionador Live Well Camomila 350ml",
       "itemPrice": "14.50",
       "itemType": "un",
@@ -133,11 +126,11 @@
   ],
   "cat-sup": [
     {
-      "id": "1",
-      "itemPrice": 45.6,
-      "itemName": "Cúrcuma 30 Cápsulas Ocean Drop",
+      "itemName": "Cúrcuma 40 Cápsulas Ocean Drop",
+      "itemPrice": "44.5",
       "itemType": "un",
-      "date": "2020-11-04T16:30:10.710Z"
+      "date": "2023-07-19T00:37:33.625Z",
+      "id": "1"
     },
     {
       "id": "2",

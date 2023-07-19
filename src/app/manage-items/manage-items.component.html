@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row mt-4">
     <div class="col-lg-12">
-      <button type="button" class="btn btn-primary" routerLink="/home">
+      <button type="button" class="btn btn-primary" routerLink="/home" *ngIf="this.router.url.includes('manage-item')">
         <i class="fa fa-arrow-left"></i>
       </button>
       <div class="cat-buttons">

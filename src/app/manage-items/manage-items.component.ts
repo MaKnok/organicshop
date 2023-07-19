@@ -29,7 +29,7 @@ export class ManageItemsComponent implements OnInit {
     public manageItemsService: ManageItemsService,
     private addUpdateItemService: AddUpdateItemService,
     private route: ActivatedRoute,
-    private router: Router
+    public router: Router
   ) {}
 
   ngOnInit(): void {

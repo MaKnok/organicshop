@@ -1,9 +1,9 @@
 import { InventoryItem } from '../../models/inventory-item.model';
 import { Component, OnInit } from '@angular/core';
 import { AddUpdateItemService } from '../add-update-item/add-update-item.service';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { Observable, Subscription, catchError, filter, map, retry, tap, throwError } from 'rxjs';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-manage-item',
@@ -28,7 +28,6 @@ export class ManageItemComponent implements OnInit {
   ngOnInit() {
     this.checkCategory();
     this.provideList();
-
     this.searchItemForm = this.formBuilder.group({
       searchValue:['',
                    [Validators.required],
@@ -99,15 +98,26 @@ export class ManageItemComponent implements OnInit {
     this.addUpdateItemService.setAction('add-item');
   }
 
-  public editItem(categoryId:string, itemId:InventoryItem ){
+  public editItem(categoryId:string, itemId:InventoryItem){
     this.router.navigated = false;
     this.router.navigate(['/add-update-item']);
     this.addUpdateItemService.setCatId(categoryId);
     this.addUpdateItemService.setAction('update-item');
   }
 
-  public deleteItem(categoryId:string, itemId:InventoryItem ){
-    confirm('Deseja mesmo excluir esse item?');
+  public deleteItem(categoryId:string,item:InventoryItem ){
+    this.addUpdateItemService.setCatId(categoryId);
+    this.subscription = this.addUpdateItemService.deleteItem(item).subscribe({
+      next: () => {
+        alert('Item deleted!');
+      },
+      error: (error) => {
+        console.log(error);
+      },
+      complete: () => console.info('Item deleted!'),
+      }
+    )
   }
+
 
 }
