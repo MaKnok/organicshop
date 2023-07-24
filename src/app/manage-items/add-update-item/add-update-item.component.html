@@ -25,8 +25,6 @@
                                     type="text" 
                                     name="itemName" 
                                     formControlName="itemName"
-                                    placeholder="{{this.addUpdateItemService.getSelectedItem().itemName}}"
-                                    value="{{this.addUpdateItemService.getSelectedItem().itemName}}"
                                     *ngIf="this.addUpdateItemService.getAction() == this.addUpdateItemService.UPDATE_ITEM"
                                     >
 
@@ -42,11 +40,6 @@
             Item existente!
         </div>
 
-        <div *ngIf="newItemForm.get('itemName')?.errors?.existingItemName && 
-                    this.addUpdateItemService.getAction() == this.addUpdateItemService.UPDATE_ITEM"
-              class="invalid-feedback mb-3">
-            Item inexistente!
-        </div>
       </div>
     </div>
 
@@ -95,7 +88,10 @@
                    formControlName="itemPrice" 
                    class="form-control" 
                    aria-label="item-price" 
-                   aria-describedby="item-price">
+                   aria-describedby="item-price"
+                   format
+                   #itemPrice
+                   >
           </div>
 
           <div class="invalid-feedback mb-3" *ngIf="newItemForm.get('itemPrice')?.errors?.required 
@@ -151,8 +147,8 @@
                    class="form-control" 
                    aria-label="item-price" 
                    aria-describedby="item-price"
-                   placeholder="{{this.addUpdateItemService.getSelectedItem().itemPrice}}"
-                   value="{{this.addUpdateItemService.getSelectedItem().itemPrice}}"
+                   format
+                   #itemPrice
                    >
           </div>
 

@@ -45,126 +45,140 @@
   ],
   "cat-food": [
     {
-      "id": "1",
-      "itemPrice": 3.5,
       "itemName": "Banana Nanica",
+      "itemPrice": "4,55",
       "itemType": "kg",
-      "date": "2020-11-04T16:30:10.710Z"
+      "date": "2023-07-23T23:49:48.536Z",
+      "id": "1"
     },
     {
-      "id": "2",
-      "itemPrice": 7.5,
       "itemName": "Arroz Integral 500g",
+      "itemPrice": "7,31",
       "itemType": "un",
-      "date": "2020-11-04T21:24:10.710Z"
+      "date": "2023-07-23T23:56:21.218Z",
+      "id": "2"
     },
     {
-      "id": "3",
-      "itemPrice": 10.5,
       "itemName": "Avocado",
+      "itemPrice": "20,76",
       "itemType": "kg",
-      "date": "2020-11-05T21:14:10.710Z"
+      "date": "2023-07-23T23:53:38.547Z",
+      "id": "3"
     },
     {
       "itemName": "Mexirica",
-      "itemPrice": "3.25",
+      "itemPrice": "5,85",
       "itemType": "kg",
-      "date": "2023-07-19T02:42:09.487Z",
+      "date": "2023-07-23T23:54:00.051Z",
       "id": "RSwdzPR"
     },
     {
       "itemName": "Beringela",
-      "itemPrice": "5.70",
+      "itemPrice": "2,33",
       "itemType": "kg",
-      "date": "2023-07-19T00:36:01.319Z",
+      "date": "2023-07-23T23:52:55.269Z",
       "id": "VBGIEgb"
     },
     {
       "itemName": "Feijão Preto Long Life",
-      "itemPrice": "8.90",
+      "itemPrice": "9,98",
       "itemType": "un",
-      "date": "2023-07-12T02:41:33.560Z",
+      "date": "2023-07-23T23:11:48.540Z",
       "id": "D--U9cw"
     },
     {
       "itemName": "Ovos Caipiras",
-      "itemPrice": "14.00",
+      "itemPrice": "10,12",
       "itemType": "un",
-      "date": "2023-07-19T01:59:23.018Z",
+      "date": "2023-07-23T23:12:41.514Z",
       "id": "fIZyj8X"
+    },
+    {
+      "itemName": "Alface Crespa",
+      "itemPrice": "6,78",
+      "itemType": "un",
+      "date": "2023-07-23T23:53:27.420Z",
+      "id": "0Kz6qBx"
     }
   ],
   "cat-health": [
     {
-      "id": "1",
-      "itemPrice": 5.6,
       "itemName": "Algodão Bolas Vegan Style 100g",
+      "itemPrice": "5,30",
       "itemType": "un",
-      "date": "2020-11-04T16:30:10.710Z"
+      "date": "2023-07-21T01:10:09.969Z",
+      "id": "1"
     },
     {
       "id": "2",
-      "itemPrice": 9.8,
+      "itemPrice": "9,80",
       "itemName": "Creme Hidratante Nature Mood 200ml",
       "itemType": "un",
       "date": "2020-11-04T21:24:10.710Z"
     },
     {
       "itemName": "Condicionador Live Well Camomila 350ml",
-      "itemPrice": "14.50",
+      "itemPrice": "10,59",
       "itemType": "un",
-      "date": "2023-07-12T02:46:46.801Z",
+      "date": "2023-07-23T20:36:55.975Z",
       "id": "bS9WQBX"
     },
     {
       "itemName": "Sabonete Líquido Íntimo Femme Plus Anise 400ml",
-      "itemPrice": "25.00",
+      "itemPrice": "21,93",
       "itemType": "un",
-      "date": "2023-07-12T02:52:44.925Z",
+      "date": "2023-07-23T20:33:10.756Z",
       "id": "5Y3B_1W"
     }
   ],
   "cat-sup": [
     {
       "itemName": "Cúrcuma 40 Cápsulas Ocean Drop",
-      "itemPrice": "44.5",
+      "itemPrice": "44,50",
       "itemType": "un",
       "date": "2023-07-19T00:37:33.625Z",
       "id": "1"
     },
     {
       "id": "2",
-      "itemPrice": 12.8,
+      "itemPrice": "12,80",
       "itemName": "Barra de Proteína Mãe Terra 40g.",
       "itemType": "un",
       "date": "2020-11-04T21:24:10.710Z"
     },
     {
       "id": "3",
-      "itemPrice": 115.7,
+      "itemPrice": "115,70",
       "itemName": "Fórmula da Beleza Cranberry Gaab Wellness",
       "itemType": "un",
       "date": "2020-11-05T21:14:10.710Z"
+    },
+    {
+      "itemName": "Whey Nature Protein 1kg",
+      "itemPrice": "150,00",
+      "itemType": "un",
+      "date": "2023-07-21T01:08:16.308Z",
+      "id": "nEyuPsf"
     }
   ],
   "cat-beauty": [
     {
       "id": "1",
-      "itemPrice": 76.4,
+      "itemPrice": "76,40",
       "itemName": "Kit Sombras True Colors Alquimist 10 cores",
       "itemType": "un",
       "date": "2020-11-04T16:30:10.710Z"
     },
     {
       "id": "2",
-      "itemPrice": 134.9,
+      "itemPrice": "134,90",
       "itemName": "Kit Rotina Facial Basics Sallve",
       "itemType": "un",
       "date": "2020-11-04T21:24:10.710Z"
     },
     {
       "id": "3",
-      "itemPrice": 115.7,
+      "itemPrice": "115,70",
       "itemName": "Batom Nude Faces GE Beauty",
       "itemType": "un",
       "date": "2020-11-05T21:14:10.710Z"

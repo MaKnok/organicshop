@@ -9,11 +9,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { ManageItemsModule } from './manage-items/manage-items.module';
 import { FooterModule } from './footer/footer.module';
 import { TopBarModule } from './top-bar/top-bar.module';
+import { BrlPipe } from './pipes/brl.pipe';
+
 
 registerLocaleData(localePt, 'pt');
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, BrlPipe],
   imports: [
     AppRoutingModule,
     BrowserModule,

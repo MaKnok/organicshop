@@ -69,6 +69,12 @@
     margin-left: 0.5em;
     color: var(--white);
   }
+
+  .no-registered-operation{
+    color:var(--danger-red)
+  }
+
+
 }
 
 @media only screen and (max-width: 990px) {

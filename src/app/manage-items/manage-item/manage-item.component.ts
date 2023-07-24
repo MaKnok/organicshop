@@ -11,7 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./manage-item.component.scss'],
 })
 export class ManageItemComponent implements OnInit {
-  inventoryItems$: Observable<InventoryItem[]>;
+  inventoryItems$: InventoryItem[];
   subscription: Subscription;
   categoryId: string = '';
   selectedItem:InventoryItem;
@@ -76,6 +76,7 @@ export class ManageItemComponent implements OnInit {
           console.table(res);
           console.log(res);
           this.inventoryItems$ = res;
+          console.log('FOUND ITEMS >>', this.inventoryItems$);
         },
         error: (error) => {
           console.log('There was an error in Add Update List! >>', error);
@@ -117,6 +118,11 @@ export class ManageItemComponent implements OnInit {
       complete: () => console.info('Item deleted!'),
       }
     )
+  }
+
+  ngOnDestroy(): void{
+    this.subscription.unsubscribe();
+    console.log("Manage item unsubscribed");
   }
 
 

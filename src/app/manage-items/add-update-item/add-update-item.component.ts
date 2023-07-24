@@ -1,10 +1,11 @@
 import { AddUpdateItemService } from 'src/app/manage-items/add-update-item/add-update-item.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { InventoryItem } from '../../models/inventory-item.model';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ItemExistsService } from './item-exists.service';
 import { ManageItemsService } from '../manage-items.service';
+import { Observable, Subscription } from 'rxjs';
 
 
 @Component({
@@ -17,6 +18,15 @@ export class AddUpdateItemComponent implements OnInit{
   public action:string = '';
   public ADD_ITEM_TITLE = 'Adicionar itens';
   public UPDATE_ITEM_TITLE = 'Atualizar item';
+  subscription: Subscription;
+
+  @ViewChild('itemPrice')
+
+  set itemPrice(element: ElementRef<HTMLInputElement>) {
+    if(element) {
+      element.nativeElement.value;
+    }
+  }
 
   public categoryLabel = '';
 
@@ -57,8 +67,8 @@ export class AddUpdateItemComponent implements OnInit{
     }else if (this.addUpdateItemService.getAction() == this.addUpdateItemService.UPDATE_ITEM){
 
       this.newItemForm = this.formBuilder.group({
-        itemName:['', [Validators.required, Validators.minLength(3)]],
-        itemPrice:['',[Validators.required]],
+        itemName:[this.addUpdateItemService.getSelectedItem().itemName, [Validators.required, Validators.minLength(3)]],
+        itemPrice:[this.addUpdateItemService.getSelectedItem().itemPrice,[Validators.required]],
         itemType:['un',[Validators.required]],
       })
 
@@ -99,8 +109,8 @@ export class AddUpdateItemComponent implements OnInit{
     if(this.newItemForm.valid){
       if (this.addUpdateItemService.getAction() == this.addUpdateItemService.ADD_ITEM){
         const newItem = this.newItemForm.getRawValue() as InventoryItem;
-        console.log(newItem);
-        this.addUpdateItemService.addItem(newItem).subscribe({
+        console.log('New item >>', newItem);
+        this.subscription = this.addUpdateItemService.addItem(newItem).subscribe({
           next: () => {
             this.router.navigate(['/manage-item', { id: this.addUpdateItemService.getCatId() }]);
           },
@@ -112,8 +122,8 @@ export class AddUpdateItemComponent implements OnInit{
       }else if (this.addUpdateItemService.getAction() == this.addUpdateItemService.UPDATE_ITEM){
         const newItem = this.newItemForm.getRawValue() as InventoryItem;
         const itemId = this.addUpdateItemService.getSelectedItem().id;
-        console.log(newItem);
-        this.addUpdateItemService.updateItem(itemId,newItem).subscribe({
+        console.log('New item >>', newItem);
+        this.subscription = this.addUpdateItemService.updateItem(itemId,newItem).subscribe({
           next: () => {
             this.router.navigate(['/manage-item', { id: this.addUpdateItemService.getCatId() }]);
           },
@@ -126,6 +136,7 @@ export class AddUpdateItemComponent implements OnInit{
       }
     }
   }
+
 
 
 }

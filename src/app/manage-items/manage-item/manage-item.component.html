@@ -53,17 +53,17 @@
             <th class="table-style__header__content">Nome do Item</th>
             <th class="table-style__header__content">Preço</th>
           </thead>
-          <tbody *ngIf="inventoryItems$ !== [] && inventoryItems$ !== undefined; else emptyList">
+          <tbody *ngIf="inventoryItems$.length > 0; else: emptyList">
               <tr class="table-style__row-style"  *ngFor="let item of inventoryItems$" (click)="selectItem(item)">
                 <td class="table-style__row-style__content" [ngClass]="{'table-style__row-style__content__selected-content': item?.id === this.selectedItem?.id}">{{ item?.date | date:"short" }}</td>
                 <td class="table-style__row-style__content" [ngClass]="{'table-style__row-style__content__selected-content': item?.id === this.selectedItem?.id}">{{ item?.itemName }}</td>
-                <td class="table-style__row-style__content" [ngClass]="{'table-style__row-style__content__selected-content': item?.id === this.selectedItem?.id}">{{ item?.itemPrice | currency }}</td>
+                <td class="table-style__row-style__content" [ngClass]="{'table-style__row-style__content__selected-content': item?.id === this.selectedItem?.id}">R$ {{ item?.itemPrice }}</td>
               </tr>
           </tbody>
         </table>
       </div>
       <ng-template #emptyList>
-        <p>Nenhuma operação cadastrada</p>
+        <p class="no-registered-operation mt-3">Nenhuma operação cadastrada nessa categoria!</p>
       </ng-template>
     </div>
   </div>
