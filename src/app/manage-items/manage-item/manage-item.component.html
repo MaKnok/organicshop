@@ -38,7 +38,7 @@
         <div class="edit-item">
           <button type="button" 
                 class="btn btn-danger mt-3" 
-                (click)="deleteItem(this.categoryId, this.selectedItem)">
+                (click)="onModalChangeDeleteItem(true)">
                 <i class="fa fa-trash"></i>
           </button>
         </div>
@@ -67,6 +67,12 @@
       </ng-template>
     </div>
   </div>
+
+  <div *ngIf="this.modalService.openModal">
+    <app-modal [message]="modalMessage" [icon]="modalIcon" [item]="this.selectedItem" [catId]="this.categoryId" (changedModal)="onModalChangeDeleteItem($event)"></app-modal>
+  </div>
 </section>
+
+
 
 

@@ -4,6 +4,7 @@ import { AddUpdateItemService } from '../add-update-item/add-update-item.service
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ModalService } from 'src/app/tools/modal/modal.service'
 
 @Component({
   selector: 'app-manage-item',
@@ -18,11 +19,18 @@ export class ManageItemComponent implements OnInit {
 
   searchItemForm!: FormGroup;
 
+  modalMessage: string;
+  modalIcon: string;
+
+  DELETE_ITEM_MESSAGE: string = 'Deseja mesmo deletar o item ' 
+  DELETE_ICON: string = 'fa fa-trash';
+
   constructor(
     private addUpdateItemService: AddUpdateItemService,
     private route: ActivatedRoute,
     private router: Router, 
     private formBuilder:FormBuilder,
+    public modalService:ModalService,
   ) {}
 
   ngOnInit() {
@@ -118,6 +126,13 @@ export class ManageItemComponent implements OnInit {
       complete: () => console.info('Item deleted!'),
       }
     )
+  }
+
+  onModalChangeDeleteItem(event: boolean) {
+    this.modalMessage = this.DELETE_ITEM_MESSAGE + this.selectedItem.itemName + ' ?';
+    this.modalIcon = this.DELETE_ICON;
+    this.modalService.openModal = event;
+    console.log('this.modalService.openModal >>>', this.modalService.openModal )
   }
 
   ngOnDestroy(): void{
