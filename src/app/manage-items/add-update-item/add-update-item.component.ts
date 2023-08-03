@@ -20,13 +20,7 @@ export class AddUpdateItemComponent implements OnInit{
   public UPDATE_ITEM_TITLE = 'Atualizar item';
   subscription: Subscription;
 
-  @ViewChild('itemPrice')
-
-  set itemPrice(element: ElementRef<HTMLInputElement>) {
-    if(element) {
-      element.nativeElement.value;
-    }
-  }
+  @ViewChild('itemPrice') itemPrice; 
 
   public categoryLabel = '';
 
@@ -108,7 +102,8 @@ export class AddUpdateItemComponent implements OnInit{
   addUpdateItem(){
     if(this.newItemForm.valid){
       if (this.addUpdateItemService.getAction() == this.addUpdateItemService.ADD_ITEM){
-        const newItem = this.newItemForm.getRawValue() as InventoryItem;
+        let newItem = this.newItemForm.getRawValue() as InventoryItem;
+        newItem['itemPrice'] = this.itemPrice.nativeElement.value;
         console.log('New item >>', newItem);
         this.subscription = this.addUpdateItemService.addItem(newItem).subscribe({
           next: () => {
@@ -120,7 +115,8 @@ export class AddUpdateItemComponent implements OnInit{
           complete: () => console.info('Register completed!'),
           })
       }else if (this.addUpdateItemService.getAction() == this.addUpdateItemService.UPDATE_ITEM){
-        const newItem = this.newItemForm.getRawValue() as InventoryItem;
+        let newItem = this.newItemForm.getRawValue() as InventoryItem;
+        newItem['itemPrice'] = this.itemPrice.nativeElement.value;
         const itemId = this.addUpdateItemService.getSelectedItem().id;
         console.log('New item >>', newItem);
         this.subscription = this.addUpdateItemService.updateItem(itemId,newItem).subscribe({
