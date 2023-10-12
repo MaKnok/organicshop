@@ -12,6 +12,7 @@
             <input
               class="form-control mt-2 text-center"
               formControlName="userName"
+              id="userName"
             />
             <div class="invalid-feedback"
                  *ngIf="newUserForm.get('userName')?.errors?.required
@@ -26,7 +27,7 @@
         <div class="col-lg-6 mt-3">
           <div class="form-group">
             <label for="userEmail">E-mail</label>
-            <input class="form-control mt-2 text-center" formControlName="userEmail" />
+            <input class="form-control mt-2 text-center" id="userEmail" formControlName="userEmail" />
             <div class="invalid-feedback"
                 *ngIf="newUserForm.get('userEmail')?.errors?.required
                 && newUserForm.get('userEmail')?.touched">E-mail obrigatório
@@ -43,7 +44,7 @@
         <div class="col-lg-6 mt-3">
           <div class="form-group">
             <label for="userPassword">Senha</label>
-            <input type="password"
+            <input type="password" id="userPassword"
                    class="form-control mt-2 text-center"
                    formControlName="userPassword"/>
                   <div class="invalid-feedback"
@@ -59,7 +60,7 @@
         <div class="col-lg-6 mt-3">
           <div class="form-group">
             <label for="userPasswordConfirm">Confirme a senha</label>
-            <input type="password"
+            <input type="password" id="userPasswordConfirm"
                    class="form-control mt-2 text-center"
                    formControlName="userPasswordConfirm"/>
                   <div class="invalid-feedback"
@@ -68,7 +69,71 @@
                   </div>
           </div>
         </div>
+      </div>
 
+      <div class="row">
+        <div class="col-lg-12 mt-3">
+          <div class="form-group">
+            <label for="userFullName">Nome Completo</label>
+            <input type="string" id="userFullName"
+                   class="form-control mt-2 text-center"
+                   formControlName="userFullName"/>
+                  <div class="invalid-feedback"
+                  *ngIf="newUserForm.get('userFullName')?.errors?.required
+                  && newUserForm.get('userFullName')?.touched">Nome completo obrigatório
+                  </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6 mt-3">
+          <div class="form-group">
+            <label for="userBirthday">Data de Nascimento</label>
+            <input type="text"  
+                   bsDatepicker
+                   [bsConfig]="{ locale: 'pt-br', dateInputFormat: 'DD/MM/YYYY' }"
+                   class="form-control mt-2 text-center" 
+                   formControlName="userBirthday">
+                   <div class="invalid-feedback"
+                   *ngIf="newUserForm.get('userBirthday')?.errors?.required
+                   && newUserForm.get('userBirthday')?.touched">Data de nascimento obrigatória
+                   </div>
+          </div>
+        </div>
+        <div class="col-lg-6 mt-3">
+          <div class="form-group">
+            <label for="userSegment">Departamento</label>
+            <select id="userSegment" name="userSegment"
+                   class="form-control mt-2 text-center"
+                   formControlName="userSegment">
+                   <option class="list-op">Help Desk</option>
+                   <option class="list-op">TI</option>
+                   <option class="list-op">Vendas</option>
+                   <option class="list-op">Administração</option>
+                   <option class="list-op">Atendimento</option>
+            </select>
+            <div class="invalid-feedback"
+            *ngIf="newUserForm.get('userSegment')?.errors?.required
+            && newUserForm.get('userSegment')?.touched">Segmento do usuário obrigatório
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12 mt-3">
+          <div class="form-group">
+            <label for="userRole">Cargo</label>
+            <input type="string" id="userRole"
+                   class="form-control mt-2 text-center"
+                   formControlName="userRole"/>
+                  <div class="invalid-feedback"
+                  *ngIf="newUserForm.get('userRole')?.errors?.required
+                  && newUserForm.get('userRole')?.touched">Cargo do novo usuário obrigatório
+                  </div>
+          </div>
+        </div>
       </div>
 
       <div class="row mt-4">

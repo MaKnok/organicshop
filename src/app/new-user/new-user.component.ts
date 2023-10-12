@@ -33,6 +33,10 @@ export class NewUserComponent implements OnInit {
         userEmail: ['', [Validators.required, Validators.email]],
         userPassword: ['', [Validators.required]],
         userPasswordConfirm: ['', [confirmPasswordValidator]],
+        userFullName: ['', [Validators.required]],
+        userBirthday: ['', [Validators.required]],
+        userSegment: ['', [Validators.required]],
+        userRole: ['', [Validators.required]],
       },
       {
         validators: [userPasswordEqualValidator, confirmPasswordValidator],
@@ -47,11 +51,19 @@ export class NewUserComponent implements OnInit {
       const username = this.newUserForm.get('userName').value;
       const useremail = this.newUserForm.get('userEmail').value;
       const userpassword = this.newUserForm.get('userPassword').value;
+      const userfullname = this.newUserForm.get('userFullName').value;
+      const userbirthday = this.newUserForm.get('userBirthday').value;
+      const usersegment = this.newUserForm.get('userSegment').value;
+      const userrole = this.newUserForm.get('userRole').value;
 
       let newUser = {
         userName: username,
         userEmail: useremail,
         userPassword: userpassword,
+        userFullName: userfullname, 
+        userBirthday: userbirthday,
+        userSegment: usersegment,
+        userRole: userrole, 
       } as NewUser;
       console.log(newUser);
 

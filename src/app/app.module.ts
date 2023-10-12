@@ -10,9 +10,14 @@ import { ManageItemsModule } from './manage-items/manage-items.module';
 import { FooterModule } from './footer/footer.module';
 import { TopBarModule } from './top-bar/top-bar.module';
 import { BrlPipe } from './pipes/brl.pipe';
-
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { defineLocale } from 'ngx-bootstrap/chronos';
+import { ptBrLocale } from 'ngx-bootstrap/locale';
 
 registerLocaleData(localePt, 'pt');
+defineLocale('pt-br', ptBrLocale);
+
 
 @NgModule({
   declarations: [AppComponent, BrlPipe],
@@ -20,11 +25,13 @@ registerLocaleData(localePt, 'pt');
     AppRoutingModule,
     BrowserModule,
     FormsModule,
+    BsDatepickerModule.forRoot(),
     HttpClientModule,
     ManageItemsModule,
     ReactiveFormsModule,
     TopBarModule,
     FooterModule,
+    BrowserAnimationsModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },

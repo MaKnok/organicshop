@@ -74,24 +74,28 @@ a{
 
 .form-group{
 
+  select.form-control > option.list-op:checked,
+  select.form-control > option.list-op:hover {
+      background-color: $active-dark-green ;
+      color: $white;
+      
+  }
+
   label{
     font-size: 14pt;
   }
 
-  input.form-control{
-    font-size: 14pt !important;
-    height: 2.25em !important;
-    background-color: $transparent-brown !important;
-    color: $brown !important;
+  input.form-control, 
+  select.form-control{
+    font-size: 14pt;
+    height: 2.25em;
+    color: $brown;
     border: 0;
   }
 
-  input.form-check-input{
-    background-color: $transparent-brown !important;
-    &:checked{
-      border-color: $active-brown;
-      background-color: $active-brown !important;
-    }
+  select.form-control option.list-op:checked {
+    background-color: $active-dark-green;
+    color: $white; 
   }
 
   span.input-group-text{
@@ -179,3 +183,9 @@ button{
   display:block !important;
   color: $danger-red !important;
 }
+
+/* Importing Bootstrap SCSS file. */
+@import "./node_modules/bootstrap/scss/bootstrap";
+
+/* Importing Datepicker SCSS file. */
+@import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";

@@ -1,28 +1,24 @@
 {
   "users": [
     {
-      "id": "1",
+      "userName": "PedroKn",
+      "userEmail": "pedrokn@gmail.com",
+      "userPassword": "Pck198877",
+      "userFullName": "Pedro de Carvalho Knok",
+      "userBirthday": "2000-03-09T03:00:00.000Z",
+      "userSegment": "TI",
+      "userRole": "Desenvolvedor Backend",
+      "id": "jEknffe"
+    },
+    {
       "userName": "MarinaKn",
-      "userEmail": "marina.knok@organicshop.com",
-      "userPassword": "Jkn2809@2023"
-    },
-    {
-      "id": "2",
-      "userName": "ThiagoSn",
-      "userEmail": "thiago.serena@organicshop.com",
-      "userPassword": "Adn0612@2023"
-    },
-    {
-      "userName": "Kyle",
-      "userEmail": "kyle@gmail.com",
-      "userPassword": "9900",
-      "id": "N-ehYra"
-    },
-    {
-      "userName": "Mila Gianne",
-      "userEmail": "mgianne@gmail.com",
-      "userPassword": "gn88",
-      "id": "8X_eFFi"
+      "userEmail": "marinaknok@gmail.com",
+      "userPassword": "M@zinha1988",
+      "userFullName": "Marina de Carvalho Knok",
+      "userBirthday": "1988-09-28T04:00:00.000Z",
+      "userSegment": "TI",
+      "userRole": "Desenvolvedora Frontend",
+      "id": "R0Omthl"
     }
   ],
   "categories": [

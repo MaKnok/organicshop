@@ -11,7 +11,7 @@ export const routes: Routes = [
     path: 'login',
     loadChildren: () =>
       import('./login/login.module').then((m) => m.LoginModule),
-    canLoad: [LoginGuard],
+      canLoad: [LoginGuard],
   },
   {
     path: 'home',
@@ -24,13 +24,13 @@ export const routes: Routes = [
       import('./manage-items/manage-items.module').then(
         (m) => m.ManageItemsModule
       ),
-    canActivate: [AuthGuard],
+      canActivate: [AuthGuard],
   },
   {
     path: 'sales',
     loadChildren: () =>
       import('./sales/sales.module').then((m) => m.SalesModule),
-    canActivate: [AuthGuard],
+      canActivate: [AuthGuard],
   },
   {
     path: 'users',
@@ -38,13 +38,13 @@ export const routes: Routes = [
       import('./user-listing/user-listing.module').then(
         (m) => m.UserListingModule
       ),
-    canActivate: [AuthGuard],
+      canActivate: [AuthGuard],
   },
   {
     path: 'new-user',
     loadChildren: () =>
       import('./new-user/new-user.module').then((m) => m.NewUserModule),
-    canActivate: [AuthGuard],
+      canLoad: [LoginGuard],
   },
 ];
 
