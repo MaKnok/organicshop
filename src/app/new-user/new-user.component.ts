@@ -28,7 +28,7 @@ export class NewUserComponent implements OnInit {
         userName: [
           '',
           [Validators.required],
-          [this.userExistsService.userExists()],
+          //[this.userExistsService.userExists()],
         ],
         userEmail: ['', [Validators.required, Validators.email]],
         userPassword: ['', [Validators.required]],
@@ -68,7 +68,8 @@ export class NewUserComponent implements OnInit {
       console.log(newUser);
 
       this.newUserService.registerNewUser(newUser).subscribe({
-        next: () => {
+        next: (response) => {
+          console.log('API Response:', response);
           this.router.navigate(['']);
         },
         error: (error) => {

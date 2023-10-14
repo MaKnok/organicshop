@@ -14,6 +14,12 @@ export class LoginService {
   ) {}
 
   authenticate(user: string, password: string): Observable<User[]> {
-    return this.authService.getByUserName(user);
+
+    let userData = {
+      "userName": user,
+      "userPassword": password
+    }
+
+    return this.authService.loginUser(userData);
   }
 }

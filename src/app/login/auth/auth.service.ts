@@ -26,18 +26,25 @@ export class AuthService {
         { params }
         //include {observe: 'response'}
       )
-      .pipe(
-        tap(() => {
-          const authToken =
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRlc3QiLCJzdWIiOjIsImlhdCI6MTYwNDMwOTc0OSwiZXhwIjoxNjA0MzA5ODA5fQ.jHez9kegJ7GT1AO5A2fQp6Dg9A6PBmeiDW1YPaCQoYs';
-          this.userService.saveToken(authToken);
-          //(res)=>{const authToken = res.header.get('x-access-token') ?? ''}
-        })
-      );
+  }
+
+  loginUser(userData: any) {
+    return this.http
+     .post<any>(this.API + '/users/login', userData)
+     .pipe(
+      tap(() => {
+        const authToken =
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRlc3QiLCJzdWIiOjIsImlhdCI6MTYwNDMwOTc0OSwiZXhwIjoxNjA0MzA5ODA5fQ.jHez9kegJ7GT1AO5A2fQp6Dg9A6PBmeiDW1YPaCQoYs';
+        this.userService.saveToken(authToken);
+        //(res)=>{const authToken = res.header.get('x-access-token') ?? ''}
+      })
+    );;
   }
 
   registerUser(newUserData: User) {
-    return this.http.post<User>(this.API + '/users', newUserData);
+    return this.http.post<User>(this.API + '/users', newUserData, {
+      withCredentials: true
+    })
   }
 
   updateUser(id: string, newUserData: any) {

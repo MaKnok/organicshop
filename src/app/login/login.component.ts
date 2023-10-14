@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   user: string;
   password: string;
-  userData: User[];
+  userData: any;
   validationMessage: string;
 
   subscription: Subscription;
@@ -35,14 +35,12 @@ export class LoginComponent implements OnInit {
             this.clearFields();
             return;
           } else if (
-            this.userData[0].userName === this.user &&
-            this.userData[0].userPassword === this.password
+            this.userData.user === this.user &&
+            this.userData.password === this.password
           ) {
             this.router.navigate(['/home']);
             this.clearValidationMessage();
             this.clearFields();
-            this.subscription.unsubscribe();
-            console.log('unsubscribe done!');
           } else {
             this.validationMessage = 'Senha invalida!';
             return;
@@ -54,7 +52,12 @@ export class LoginComponent implements OnInit {
           console.log(this.validationMessage);
           this.clearFields();
         },
-        complete: () => console.info('Login completed!'),
+        complete: () => {
+          console.info('Login completed!');
+          
+          this.subscription.unsubscribe();
+          console.log('unsubscribe done!');
+        },
       });
   }
 
