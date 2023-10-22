@@ -32,7 +32,7 @@ export class NewUserComponent implements OnInit {
         ],
         userEmail: ['', [Validators.required, Validators.email]],
         userPassword: ['', [Validators.required]],
-        userPasswordConfirm: ['', [confirmPasswordValidator]],
+        userPasswordConfirm: ['', [confirmPasswordValidator]],//password strength
         userFullName: ['', [Validators.required]],
         userBirthday: ['', [Validators.required]],
         userSegment: ['', [Validators.required]],

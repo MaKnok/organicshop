@@ -10,6 +10,7 @@ import { BehaviorSubject } from 'rxjs';
 export class UserService {
   //observable which stores the last state
   private userSubject = new BehaviorSubject<AuthUser>({});
+  private userData: any[] = []; 
 
   constructor(private tokenService: TokenService) {
     if (this.tokenService.hasToken()) {
@@ -19,12 +20,7 @@ export class UserService {
 
   private decodeJWT() {
     const token = this.tokenService.returnsToken();
-    //const user = jwt_decode(token) as AuthUser;
-    const user = {
-      id: 1,
-      name: 'MarinaKn',
-      email: 'marina.knok@organicshop.com',
-    };
+    const user = jwt_decode(token) as AuthUser;
     this.userSubject.next(user);
   }
 
@@ -37,9 +33,18 @@ export class UserService {
     this.decodeJWT();
   }
 
+  saveUserData(userData: any) {
+    this.userData.push(userData);
+  }
+
+  returnUserData():any {
+    return this.userData; 
+  }
+
   logout() {
     this.tokenService.deleteToken();
     this.userSubject.next({});
+    this.userData = [];
   }
 
   isLoggedIn() {

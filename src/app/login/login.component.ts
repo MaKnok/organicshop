@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { LoginService } from './login.service';
 import { User } from '../models/user.model';
 import { Subscription } from 'rxjs';
+import { UserService } from '../login/auth/user/user.service';
+import { AuthService } from '../login/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,10 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  constructor(private loginService: LoginService, private router: Router) {}
+  constructor(private loginService: LoginService, 
+              private userService: UserService,
+              private authService: AuthService,
+              private router: Router) {}
 
   user: string;
   password: string;
@@ -19,13 +24,15 @@ export class LoginComponent implements OnInit {
 
   subscription: Subscription;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('user data >>', this.userService.returnUserData());
+  }
 
   enterLogin() {
     this.subscription = this.loginService
       .authenticate(this.user, this.password)
       .subscribe({
-        next: (res) => {
+        next: async (res) => {
           this.userData = res;
           console.log(this.userData);
           console.log(this.user, this.password);
@@ -38,7 +45,12 @@ export class LoginComponent implements OnInit {
             this.userData.user === this.user &&
             this.userData.password === this.password
           ) {
-            this.router.navigate(['/home']);
+            await this.storeToken();
+
+            setTimeout(()=>{
+              this.router.navigate(['/home']);
+            }, 1000)
+
             this.clearValidationMessage();
             this.clearFields();
           } else {
@@ -59,6 +71,20 @@ export class LoginComponent implements OnInit {
           console.log('unsubscribe done!');
         },
       });
+  }
+
+  storeToken() {
+    this.authService.getLoggedInUser()
+    .subscribe((res: any)=>{
+      console.log(res);
+      const authToken = res.token;
+      const userData = res.data;
+      this.userService.saveToken(authToken);
+      this.userService.saveUserData(userData);
+    },
+    (err)=>{
+      console.log(`${err} - not logged in`); 
+    })
   }
 
   clearValidationMessage() {

@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class TopBarComponent {
   constructor(private userService: UserService, public router: Router) {}
 
-  user$ = this.userService.returnsUser();
+  user$ = this.userService.returnUserData();
 
   logout() {
     this.userService.logout();
