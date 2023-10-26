@@ -5,7 +5,7 @@
       <form class="form-group" [formGroup]="searchItemForm" (submit)="searchItem()">
         <div class="input-group mb-2">
           <input type="text" 
-                 class="form-control" 
+                 class="form-control items-form-control" 
                  id="searchValue" 
                  placeholder="Busca" 
                  name="searchValue" 
@@ -53,7 +53,7 @@
             <th class="table-style__header__content">Nome do Item</th>
             <th class="table-style__header__content">Preço</th>
           </thead>
-          <tbody *ngIf="inventoryItems$.length > 0; else: emptyList">
+          <tbody *ngIf="inventoryItems$; else: emptyList">
               <tr class="table-style__row-style"  *ngFor="let item of inventoryItems$" (click)="selectItem(item)">
                 <td class="table-style__row-style__content" [ngClass]="{'table-style__row-style__content__selected-content': item?.id === this.selectedItem?.id}">{{ item?.date | date:"short" }}</td>
                 <td class="table-style__row-style__content" [ngClass]="{'table-style__row-style__content__selected-content': item?.id === this.selectedItem?.id}">{{ item?.itemName }}</td>

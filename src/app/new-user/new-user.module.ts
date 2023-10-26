@@ -4,6 +4,7 @@ import { NewUserComponent } from './new-user.component';
 import { NewUserRoutingModule } from './new-user-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [NewUserComponent],
@@ -12,6 +13,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     NewUserRoutingModule, 
     ReactiveFormsModule,
     BsDatepickerModule,
+    SharedModule
   ],
   exports: [NewUserComponent],
 })

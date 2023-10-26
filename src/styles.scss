@@ -93,6 +93,11 @@ a{
     border: 0;
   }
 
+  .items-form-control{
+    border: 2px solid $brown !important;
+    color: $brown;
+  }
+
   select.form-control option.list-op:checked {
     background-color: $active-dark-green;
     color: $white; 

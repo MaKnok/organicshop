@@ -66,7 +66,18 @@ export class AddUpdateItemService {
   /*HTTP SERVICES*/
 
   allItems(id: string): Observable<any> {
-    return this.httpClient.get<InventoryItem[]>(this.url + '/' + id);
+    return this.httpClient.get<InventoryItem[]>(this.url + '/inventoryItems').pipe(
+      map((response) => {
+        if (response && response[0][id]) {
+          return response[0][id];
+        } else {
+          return [];
+        }
+      }),
+      tap((response) => console.log(response[0][id])),
+      catchError((err) => throwError(() => new Error(err))),
+      retry(3)
+    );
   }
 
   searchItems(id: string, searchedValue:any): Observable<any> {
@@ -77,7 +88,7 @@ export class AddUpdateItemService {
       tap((items) => console.log(items)),
       catchError((err) => throwError(() => new Error(err))),
       retry(3)
-    );;
+    );
   }
 
   addItem(inventoryItem: InventoryItem): Observable<InventoryItem> {

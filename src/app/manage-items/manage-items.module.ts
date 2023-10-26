@@ -6,21 +6,22 @@ import { ManageItemComponent } from './manage-item/manage-item.component';
 import { AddUpdateItemComponent } from './add-update-item/add-update-item.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormatDirective } from '../directives/format.directive'
-import { ModalComponent } from 'src/app/tools/modal/modal.component';
 import { CurrencyPipe, DecimalPipe } from '@angular/common';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [ManageItemsComponent, 
                  ManageItemComponent, 
                  AddUpdateItemComponent, 
                  FormatDirective, 
-                 ModalComponent],
+                 ],
   imports: [
     CommonModule,
     ManageItemsRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
-  exports:[ManageItemsComponent, FormatDirective, ModalComponent],
+  exports:[ManageItemsComponent, FormatDirective],
   providers: [ CurrencyPipe, DecimalPipe ],
 })
 export class ManageItemsModule { }

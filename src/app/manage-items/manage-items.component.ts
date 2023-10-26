@@ -47,7 +47,7 @@ export class ManageItemsComponent implements OnInit {
   }
 
   gotoCategory(category: Category) {
-    this.router.navigate(['/manage-item', { id: category.id }]);
+    this.router.navigate(['/manage-item', { id: category.catId }]);
     this.manageItemsService.setChosenCategory(this.categoryId); 
     this.addUpdateItemService.setCatId(this.categoryId);
     this.addUpdateItemService.setCatLabel(category.categoryName);

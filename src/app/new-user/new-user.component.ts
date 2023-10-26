@@ -6,6 +6,8 @@ import { NewUser } from './new-user';
 import { NewUserService } from './new-user.service';
 import { UserExistsService } from './user-exists.service';
 import { userPasswordEqualValidator } from './user-password-equal.validator';
+import { passwordStrenghtValidator } from './password-strength.validator';
+import { ModalService } from '../tools/modal/modal.service';
 
 @Component({
   selector: 'app-new-user',
@@ -19,8 +21,16 @@ export class NewUserComponent implements OnInit {
     private formBuilder: FormBuilder,
     private newUserService: NewUserService,
     private userExistsService: UserExistsService,
-    private router: Router
+    private router: Router,
+    public modalService: ModalService
   ) {}
+
+  modalMessage: string;
+  modalIcon: string;
+  modalType: string; 
+
+  ADDED_USER_MESSAGE: string = 'Usuário adicionado com sucesso!'; 
+  SUCCESS_ICON: string = 'fa fa-check';
 
   ngOnInit(): void {
     this.newUserForm = this.formBuilder.group(
@@ -28,10 +38,11 @@ export class NewUserComponent implements OnInit {
         userName: [
           '',
           [Validators.required],
-          //[this.userExistsService.userExists()],
+          [this.userExistsService.userExists()],
         ],
-        userEmail: ['', [Validators.required, Validators.email]],
-        userPassword: ['', [Validators.required]],
+        userEmail: ['', [Validators.required, Validators.email],  
+                        [this.userExistsService.emailExists()]],
+        userPassword: ['', [Validators.required, passwordStrenghtValidator]],
         userPasswordConfirm: ['', [confirmPasswordValidator]],//password strength
         userFullName: ['', [Validators.required]],
         userBirthday: ['', [Validators.required]],
@@ -39,7 +50,7 @@ export class NewUserComponent implements OnInit {
         userRole: ['', [Validators.required]],
       },
       {
-        validators: [userPasswordEqualValidator, confirmPasswordValidator],
+        validators: [userPasswordEqualValidator, confirmPasswordValidator, passwordStrenghtValidator],
         //whole form validator
       }
     );
@@ -70,7 +81,7 @@ export class NewUserComponent implements OnInit {
       this.newUserService.registerNewUser(newUser).subscribe({
         next: (response) => {
           console.log('API Response:', response);
-          this.router.navigate(['']);
+          this.onModalChangeUserWasAdded(true);
         },
         error: (error) => {
           console.log(error);
@@ -79,4 +90,13 @@ export class NewUserComponent implements OnInit {
       });
     }
   }
+
+  onModalChangeUserWasAdded(event: boolean) {
+    this.modalMessage = this.ADDED_USER_MESSAGE;
+    this.modalIcon = this.SUCCESS_ICON;
+    this.modalType = "ok";
+    this.modalService.openModal = event;
+    console.log('this.modalService.openModal >>>', this.modalService.openModal )
+  }
+
 }

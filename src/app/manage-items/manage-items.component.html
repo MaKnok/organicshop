@@ -11,10 +11,10 @@
               #categoryButton
               (click)="gotoCategory(category)"
               >
-        <i class="fa fa-cutlery" *ngIf="category.id === this.manageItemsService.FOOD_CAT"></i>
-        <i class="fa fa-bath" *ngIf="category.id === this.manageItemsService.HEALTH_CAT"></i>
-        <i class="fa fa-flask" *ngIf="category.id === this.manageItemsService.SUP_CAT"></i>
-        <i class="fa fa-paint-brush" *ngIf="category.id === this.manageItemsService.BEAUTY_CAT"></i>
+        <i class="fa fa-cutlery" *ngIf="category.catId === this.manageItemsService.FOOD_CAT"></i>
+        <i class="fa fa-bath" *ngIf="category.catId === this.manageItemsService.HEALTH_CAT"></i>
+        <i class="fa fa-flask" *ngIf="category.catId === this.manageItemsService.SUP_CAT"></i>
+        <i class="fa fa-paint-brush" *ngIf="category.catId === this.manageItemsService.BEAUTY_CAT"></i>
         <a class="category-name">{{ category.categoryName }}</a>
         </button>
       </div>

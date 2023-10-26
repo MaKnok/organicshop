@@ -11,7 +11,7 @@
                     </p>
                 </div>
             </div>
-            <div class="row mt-3" *ngIf="icon == DELETE_ICON">
+            <div class="row mt-3" *ngIf="modalType == CONFIRMATION_MODAL">
                 <div class="col-6">
                     <button (click)="closeModal()" class="btn btn-danger" >
                         Não
@@ -23,8 +23,15 @@
                     </button>
                 </div>
             </div>
+            <div class="row mt-3" *ngIf="modalType == OK_MODAL">
+                <div class="col-12">
+                    <button (click)="yesAnswer()" class="btn btn-success ok-button">
+                        Ok
+                    </button>
+                </div>
+            </div>
         </div>
- 
+
     </div>
     <div class="overlay"></div>
-  </section>
+</section>

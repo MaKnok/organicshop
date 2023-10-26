@@ -23,4 +23,19 @@ export class UserExistsService {
       );
     };
   }
+
+  emailExists() {
+    return (control: AbstractControl) => {
+      return control.valueChanges.pipe(
+        //receives what user is typing...
+        switchMap(
+          (userEmail) => this.newUserService.verifyExistingEmail(userEmail)
+          //converts typed value into request to backend, changes flow
+        ),
+        map((user) => (user.length !== 0 ? { existingEmail: true } : null)),
+        //doesnt change flow, but result
+        first() //closes observable
+      );
+    };
+  }
 }

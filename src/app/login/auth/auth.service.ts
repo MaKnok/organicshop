@@ -18,13 +18,16 @@ export class AuthService {
   }
 
   getByUserName(userName: string): Observable<User[]> {
-    //change to HttpResponse
-    const params = new HttpParams().append('userName', userName);
     return this.http
       .get<User[]>(
-        this.API + '/users',
-        { params }
-        //include {observe: 'response'}
+        this.API + '/users/username/' + userName,
+      )
+  }
+
+  getByUserEmail(userEmail: string): Observable<User[]> {
+    return this.http
+      .get<User[]>(
+        this.API + '/users/useremail/' + userEmail,
       )
   }
 

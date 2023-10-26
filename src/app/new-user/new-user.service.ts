@@ -21,4 +21,8 @@ export class NewUserService {
   verifyExistingUser(userName: string): Observable<User[]> {
     return this.authService.getByUserName(userName);
   }
+
+  verifyExistingEmail(email: string): Observable<User[]>{
+    return this.authService.getByUserEmail(email);
+  }
 }

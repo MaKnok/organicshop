@@ -36,6 +36,10 @@
                 *ngIf="newUserForm.get('userEmail')?.errors?.email
                 && newUserForm.get('userEmail')?.touched">E-mail no formato incorreto
             </div>
+            <div class="invalid-feedback"
+            *ngIf="newUserForm.get('userEmail')?.errors?.existingEmail">
+            E-mail já existe
+            </div>
           </div>
         </div>
       </div>
@@ -55,6 +59,12 @@
                   *ngIf="newUserForm.errors?.passwordEqualUser">
                   Senha deve ser diferente do usuário
                   </div>
+                  <div class="invalid-feedback"
+                  *ngIf="newUserForm.errors?.passwordIsWeak">
+                  Senha deve ter pelo menos 8 caracteres, um número e um caracter especial (Exemplo: VbX9#aweRt!)
+                  </div>
+
+                  
           </div>
         </div>
         <div class="col-lg-6 mt-3">
@@ -141,7 +151,7 @@
           <button class="btn btn-secondary btn-block" type="reset">Limpar</button>
         </div>
         <div class="col-lg-6">
-          <button class="btn btn-primary btn-block" type="submit">Cadastrar usuário</button>
+          <button class="btn btn-primary btn-block" type="submit" [disabled]="!this.newUserForm.valid">Cadastrar usuário</button>
         </div>
       </div>
 
@@ -152,6 +162,12 @@
     </div>
 
   </div>
+
+  <div *ngIf="this.modalService.openModal">
+    <app-modal [message]="modalMessage" [icon]="modalIcon" [modalType]="modalType" (changedModal)="onModalChangeUserWasAdded($event)"></app-modal>
+  </div>
 </div>
+
+
 
 
