@@ -103,7 +103,7 @@ export class AddUpdateItemComponent implements OnInit{
     if(this.newItemForm.valid){
       if (this.addUpdateItemService.getAction() == this.addUpdateItemService.ADD_ITEM){
         let newItem = this.newItemForm.getRawValue() as InventoryItem;
-        newItem['itemPrice'] = this.itemPrice.nativeElement.value;
+        newItem['itemPrice'] = parseFloat(this.itemPrice.nativeElement.value);
         console.log('New item >>', newItem);
         this.subscription = this.addUpdateItemService.addItem(newItem).subscribe({
           next: () => {
@@ -116,8 +116,8 @@ export class AddUpdateItemComponent implements OnInit{
           })
       }else if (this.addUpdateItemService.getAction() == this.addUpdateItemService.UPDATE_ITEM){
         let newItem = this.newItemForm.getRawValue() as InventoryItem;
-        newItem['itemPrice'] = this.itemPrice.nativeElement.value;
-        const itemId = this.addUpdateItemService.getSelectedItem().id;
+        newItem['itemPrice'] = parseFloat(this.itemPrice.nativeElement.value);
+        const itemId = this.addUpdateItemService.getSelectedItem()._id;
         console.log('New item >>', newItem);
         this.subscription = this.addUpdateItemService.updateItem(itemId,newItem).subscribe({
           next: () => {

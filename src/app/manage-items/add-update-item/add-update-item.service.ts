@@ -80,11 +80,12 @@ export class AddUpdateItemService {
     );
   }
 
-  searchItems(id: string, searchedValue:any): Observable<any> {
+  searchItems(searchedValue:any): Observable<any> {
     console.log('Searched value >>', searchedValue);
-    return this.httpClient.get<InventoryItem[]>(this.url + '/' + id).pipe(
-      map((items) => items.filter((item) => item.itemName.toUpperCase().
-                                            includes(searchedValue.searchValue.toUpperCase()))),
+    return this.httpClient.get<InventoryItem[]>(this.url + '/inventoryItems/search?search=' + searchedValue.searchValue).pipe(
+      map((items) => {
+        return items;
+      }),
       tap((items) => console.log(items)),
       catchError((err) => throwError(() => new Error(err))),
       retry(3)
@@ -93,17 +94,18 @@ export class AddUpdateItemService {
 
   addItem(inventoryItem: InventoryItem): Observable<InventoryItem> {
     this.hydrate(inventoryItem);
-    return this.httpClient.post<InventoryItem>(this.url + '/' + this.getCatId(), inventoryItem);
+    console.log('inventoryItem >>', inventoryItem);
+    return this.httpClient.post<InventoryItem>(this.url + '/inventoryItems/' + this.getCatId(), inventoryItem);
   }
 
   updateItem(id: string | number, newUserData: any): Observable<InventoryItem>  {
     this.hydrate(newUserData);
-    return this.httpClient.put<InventoryItem>(this.url + '/' + this.getCatId() + '/' + id, newUserData);
+    return this.httpClient.put<InventoryItem>(this.url + '/inventoryItems/' + this.getCatId() + '/' + id, newUserData);
   }
 
   deleteItem(item:InventoryItem): Observable<InventoryItem> {
-    const itemId = item.id
-    return this.httpClient.delete<InventoryItem>(this.url + '/' + this.getCatId() + '/' + itemId);
+    const itemId = item._id
+    return this.httpClient.delete<InventoryItem>(this.url + '/inventoryItems/' + this.getCatId() + '/' + itemId);
   }
 
   private hydrate(inventoryItem: any) {

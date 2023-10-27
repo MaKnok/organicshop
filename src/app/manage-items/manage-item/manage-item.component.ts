@@ -21,6 +21,7 @@ export class ManageItemComponent implements OnInit {
 
   modalMessage: string;
   modalIcon: string;
+  modalType: string = 'confirmation'
 
   DELETE_ITEM_MESSAGE: string = 'Deseja mesmo deletar o item ' 
   DELETE_ICON: string = 'fa fa-trash';
@@ -78,7 +79,7 @@ export class ManageItemComponent implements OnInit {
       let searchedItem = this.searchItemForm.getRawValue();
       searchedItem = searchedItem;
       this.subscription = this.addUpdateItemService
-      .searchItems(this.categoryId,searchedItem)
+      .searchItems(searchedItem)
       .subscribe({
         next: (res) => {
           console.table(res);

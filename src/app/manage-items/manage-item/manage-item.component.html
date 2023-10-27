@@ -69,7 +69,7 @@
   </div>
 
   <div *ngIf="this.modalService.openModal">
-    <app-modal [message]="modalMessage" [icon]="modalIcon" [item]="this.selectedItem" [catId]="this.categoryId" (changedModal)="onModalChangeDeleteItem($event)"></app-modal>
+    <app-modal [modalType]="modalType" [message]="modalMessage" [icon]="modalIcon" [item]="this.selectedItem" [catId]="this.categoryId" (changedModal)="onModalChangeDeleteItem($event)"></app-modal>
   </div>
 </section>
 

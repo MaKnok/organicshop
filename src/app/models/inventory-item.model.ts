@@ -1,9 +1,9 @@
 export interface InventoryItem {
-    id?: number | string;
-    itemPrice: string;
+    _id?: number | string;
+    itemPrice: number;
     itemName: string;
     itemType: string;
-    date?: string;
+    date?: Date;
 }
 
 
