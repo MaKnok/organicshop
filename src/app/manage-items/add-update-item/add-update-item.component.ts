@@ -62,7 +62,7 @@ export class AddUpdateItemComponent implements OnInit{
 
       this.newItemForm = this.formBuilder.group({
         itemName:[this.addUpdateItemService.getSelectedItem().itemName, [Validators.required, Validators.minLength(3)]],
-        itemPrice:[this.addUpdateItemService.getSelectedItem().itemPrice,[Validators.required]],
+        itemPrice:[this.addUpdateItemService.getSelectedItem().itemPrice.toFixed(2),[Validators.required]],
         itemType:['un',[Validators.required]],
       })
 
@@ -99,13 +99,18 @@ export class AddUpdateItemComponent implements OnInit{
     
   }
 
+  private hydratePriceItem(){
+    let newItem = this.newItemForm.getRawValue() as InventoryItem;
+    newItem['itemPrice'] = parseFloat(this.itemPrice.nativeElement.value.replace(',', '.'));
+    console.log('New item >>', newItem);
+    return newItem; 
+  }
+
   addUpdateItem(){
     if(this.newItemForm.valid){
       if (this.addUpdateItemService.getAction() == this.addUpdateItemService.ADD_ITEM){
-        let newItem = this.newItemForm.getRawValue() as InventoryItem;
-        newItem['itemPrice'] = parseFloat(this.itemPrice.nativeElement.value);
-        console.log('New item >>', newItem);
-        this.subscription = this.addUpdateItemService.addItem(newItem).subscribe({
+        const hydratedItem = this.hydratePriceItem();
+        this.subscription = this.addUpdateItemService.addItem(hydratedItem).subscribe({
           next: () => {
             this.router.navigate(['/manage-item', { id: this.addUpdateItemService.getCatId() }]);
           },
@@ -115,11 +120,9 @@ export class AddUpdateItemComponent implements OnInit{
           complete: () => console.info('Register completed!'),
           })
       }else if (this.addUpdateItemService.getAction() == this.addUpdateItemService.UPDATE_ITEM){
-        let newItem = this.newItemForm.getRawValue() as InventoryItem;
-        newItem['itemPrice'] = parseFloat(this.itemPrice.nativeElement.value);
+        const hydratedItem = this.hydratePriceItem();
         const itemId = this.addUpdateItemService.getSelectedItem()._id;
-        console.log('New item >>', newItem);
-        this.subscription = this.addUpdateItemService.updateItem(itemId,newItem).subscribe({
+        this.subscription = this.addUpdateItemService.updateItem(itemId,hydratedItem).subscribe({
           next: () => {
             this.router.navigate(['/manage-item', { id: this.addUpdateItemService.getCatId() }]);
           },

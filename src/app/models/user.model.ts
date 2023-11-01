@@ -1,7 +1,10 @@
 export interface User {
-  userId?: number | string;
+  _id?: number | string;
   userName: string;
   userEmail: string;
   userPassword: string;
-  date?: string;
+  userFullName: string;
+  userBirthday: Date;
+  userSegment: string;
+  userRole: string;
 }

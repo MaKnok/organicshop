@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { NewUser } from './new-user';
 import { environment } from 'src/environments/environment';
 import { AuthService } from 'src/app/login/auth/auth.service';
 import { User } from '../models/user.model';
@@ -14,7 +13,7 @@ const API = environment.apiURL;
 export class NewUserService {
   constructor(private http: HttpClient, private authService: AuthService) {}
 
-  registerNewUser(newUser: NewUser): Observable<User> {
+  registerNewUser(newUser: User): Observable<User> {
     return this.authService.registerUser(newUser);
   }
 

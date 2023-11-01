@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { confirmPasswordValidator } from './confirm-password.validator';
-import { NewUser } from './new-user';
+import { User } from '../models/user.model';
 import { NewUserService } from './new-user.service';
 import { UserExistsService } from './user-exists.service';
 import { userPasswordEqualValidator } from './user-password-equal.validator';
@@ -75,7 +75,7 @@ export class NewUserComponent implements OnInit {
         userBirthday: userbirthday,
         userSegment: usersegment,
         userRole: userrole, 
-      } as NewUser;
+      } as User;
       console.log(newUser);
 
       this.newUserService.registerNewUser(newUser).subscribe({

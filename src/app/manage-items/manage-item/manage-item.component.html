@@ -57,7 +57,7 @@
               <tr class="table-style__row-style"  *ngFor="let item of inventoryItems$" (click)="selectItem(item)">
                 <td class="table-style__row-style__content" [ngClass]="{'table-style__row-style__content__selected-content': item?.id === this.selectedItem?.id}">{{ item?.date | date:"short" }}</td>
                 <td class="table-style__row-style__content" [ngClass]="{'table-style__row-style__content__selected-content': item?.id === this.selectedItem?.id}">{{ item?.itemName }}</td>
-                <td class="table-style__row-style__content" [ngClass]="{'table-style__row-style__content__selected-content': item?.id === this.selectedItem?.id}">R$ {{ item?.itemPrice }}</td>
+                <td class="table-style__row-style__content" [ngClass]="{'table-style__row-style__content__selected-content': item?.id === this.selectedItem?.id}">{{ item?.itemPrice | currency:'BRL':true:'1.2-2' }}</td>
               </tr>
           </tbody>
         </table>

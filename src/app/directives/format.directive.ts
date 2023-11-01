@@ -1,5 +1,6 @@
 import { Directive, OnInit, forwardRef, ElementRef, HostListener, Renderer2 } from '@angular/core';
 import { DecimalPipe, CurrencyPipe } from '@angular/common';
+import { AddUpdateItemService } from 'src/app/manage-items/add-update-item/add-update-item.service';
 import { BrlPipe } from '../pipes/brl.pipe';
 
 @Directive({
@@ -8,7 +9,12 @@ import { BrlPipe } from '../pipes/brl.pipe';
   export class FormatDirective implements OnInit {
     currencyChars = new RegExp('[\.,]', 'g'); // we're going to remove commas and dots
 
-  constructor(public el: ElementRef, public renderer: Renderer2, private decimalPipe: DecimalPipe, private currencyPipe: CurrencyPipe) {}
+  constructor(public el: ElementRef, 
+              public renderer: Renderer2, 
+              private decimalPipe: DecimalPipe, 
+              private currencyPipe: CurrencyPipe, 
+              private addUpdateItemService: AddUpdateItemService 
+              ) {}
 
   ngOnInit() {
     this.format(this.el.nativeElement.value); // format any initial values
@@ -25,8 +31,13 @@ import { BrlPipe } from '../pipes/brl.pipe';
 
   format(val:string) {
     // 1. test for non-number characters and replace/remove them
+
+    const rawValue = String(val); 
+    
     let numberFormat = parseInt(String(val).replace(this.currencyChars, ''));
-    numberFormat = numberFormat/100
+
+    numberFormat = numberFormat/100;
+    
 
     //let newNumberFormat = numberFormat.toFixed(2);
     // console.log(numberFormat); // raw number
@@ -42,5 +53,6 @@ import { BrlPipe } from '../pipes/brl.pipe';
     this.renderer.setProperty(this.el.nativeElement, 'value', brl);
     console.log('Native Element >>>', this.el.nativeElement.value);
   }
+
   
   }

@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Category } from 'src/app/models/category';
+import { Category } from 'src/app/models/category.model';
 import { ManageItemsService } from './manage-items.service';
 import { AddUpdateItemService } from './add-update-item/add-update-item.service';
 import { Router, ActivatedRoute } from '@angular/router';
