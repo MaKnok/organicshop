@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError, map, retry, tap, throwError } from 'rxjs';
 import { InventoryItem } from '../../models/inventory-item.model';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -20,8 +21,8 @@ export class AddUpdateItemService {
   private action:string = '';
   private selectedItem:InventoryItem;
 
-  constructor(private httpClient: HttpClient) {
-    this.inventoryItem = [];
+  constructor(private httpClient: HttpClient,  public router: Router) {
+    this.inventoryItem = [];  
   }
 
   /*GETTERS AND SETTERS*/
@@ -112,17 +113,15 @@ export class AddUpdateItemService {
     inventoryItem.date = new Date();
   }
 
-  verifyExistingItem(searchedValue: string) {
-    const list = this.allItems(this.getCatId());
+  verifyExistingItem(searchedValue: any) {
+    const list = this.searchItems(searchedValue);
     const filteredList = list.pipe(
-      map((items) => items.filter((item) => item.itemName.toUpperCase() === searchedValue.toUpperCase())),
       tap((items) => console.log(items)),
       catchError((err) => throwError(() => new Error(err))),
       retry(3)
     );
     console.log(filteredList);
     return filteredList
-    
   }
 
   /*CLEAR ENVIRONMENT*/

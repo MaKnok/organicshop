@@ -109,6 +109,12 @@
                    *ngIf="newUserForm.get('userBirthday')?.errors?.required
                    && newUserForm.get('userBirthday')?.touched">Data de nascimento obrigatória
                    </div>
+                   <div class="invalid-feedback"
+                   *ngIf="newUserForm.get('userBirthday')?.errors?.tooYoung">Você precisa ter 18 anos ou mais
+                   </div>
+                   <div class="invalid-feedback"
+                   *ngIf="newUserForm.get('userBirthday')?.errors?.futureDate">Data de nascimento inválida
+                   </div>
           </div>
         </div>
         <div class="col-lg-6 mt-3">
@@ -117,11 +123,7 @@
             <select id="userSegment" name="userSegment"
                    class="form-control mt-2 text-center"
                    formControlName="userSegment">
-                   <option class="list-op">Help Desk</option>
-                   <option class="list-op">TI</option>
-                   <option class="list-op">Vendas</option>
-                   <option class="list-op">Administração</option>
-                   <option class="list-op">Atendimento</option>
+                   <option class="list-op" *ngFor="let option of options">{{ option }}</option>
             </select>
             <div class="invalid-feedback"
             *ngIf="newUserForm.get('userSegment')?.errors?.required
@@ -165,6 +167,10 @@
 
   <div *ngIf="this.modalService.openModal">
     <app-modal [message]="modalMessage" [icon]="modalIcon" [modalType]="modalType" (changedModal)="onModalChangeUserWasAdded($event)"></app-modal>
+  </div>
+
+  <div *ngIf="this.modalService.openModal">
+    <app-modal [message]="modalMessage" [icon]="modalIcon" [modalType]="modalType" (changedModal)="onModalChangeThereWasAnError($event)"></app-modal>
   </div>
 </div>
 

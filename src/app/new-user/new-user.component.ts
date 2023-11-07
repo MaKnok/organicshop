@@ -7,6 +7,7 @@ import { NewUserService } from './new-user.service';
 import { UserExistsService } from './user-exists.service';
 import { userPasswordEqualValidator } from './user-password-equal.validator';
 import { passwordStrenghtValidator } from './password-strength.validator';
+import { ageValidator } from './age.validator';
 import { ModalService } from '../tools/modal/modal.service';
 
 @Component({
@@ -22,7 +23,7 @@ export class NewUserComponent implements OnInit {
     private newUserService: NewUserService,
     private userExistsService: UserExistsService,
     private router: Router,
-    public modalService: ModalService
+    public modalService: ModalService,
   ) {}
 
   modalMessage: string;
@@ -31,6 +32,13 @@ export class NewUserComponent implements OnInit {
 
   ADDED_USER_MESSAGE: string = 'Usuário adicionado com sucesso!'; 
   SUCCESS_ICON: string = 'fa fa-check';
+
+  ERROR_MESSAGE: string = 'Ocorreu um erro!'; 
+  ERROR_ICON: string = 'fa fa-exclamation-triangle';
+
+  options: string[] = [
+    'Help Desk', 'TI', 'Vendas', 'Administração', 'Atendimento'
+  ]
 
   ngOnInit(): void {
     this.newUserForm = this.formBuilder.group(
@@ -45,7 +53,7 @@ export class NewUserComponent implements OnInit {
         userPassword: ['', [Validators.required, passwordStrenghtValidator]],
         userPasswordConfirm: ['', [confirmPasswordValidator]],//password strength
         userFullName: ['', [Validators.required]],
-        userBirthday: ['', [Validators.required]],
+        userBirthday: ['', [Validators.required, ageValidator(18)]],
         userSegment: ['', [Validators.required]],
         userRole: ['', [Validators.required]],
       },
@@ -85,6 +93,7 @@ export class NewUserComponent implements OnInit {
         },
         error: (error) => {
           console.log(error);
+          this.onModalChangeThereWasAnError(true); 
         },
         complete: () => console.info('Register completed!'),
       });
@@ -94,6 +103,14 @@ export class NewUserComponent implements OnInit {
   onModalChangeUserWasAdded(event: boolean) {
     this.modalMessage = this.ADDED_USER_MESSAGE;
     this.modalIcon = this.SUCCESS_ICON;
+    this.modalType = "ok";
+    this.modalService.openModal = event;
+    console.log('this.modalService.openModal >>>', this.modalService.openModal )
+  }
+
+  onModalChangeThereWasAnError(event: boolean) {
+    this.modalMessage = this.ERROR_MESSAGE;
+    this.modalIcon = this.ERROR_ICON;
     this.modalType = "ok";
     this.modalService.openModal = event;
     console.log('this.modalService.openModal >>>', this.modalService.openModal )

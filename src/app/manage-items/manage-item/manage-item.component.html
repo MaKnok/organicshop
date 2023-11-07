@@ -5,11 +5,15 @@
       <form class="form-group" [formGroup]="searchItemForm" (submit)="searchItem()">
         <div class="input-group mb-2">
           <input type="text" 
-                 class="form-control items-form-control" 
-                 id="searchValue" 
-                 placeholder="Busca" 
-                 name="searchValue" 
-                 formControlName="searchValue">
+                class="form-control items-form-control" 
+                id="searchValue" 
+                placeholder="Busca" 
+                name="searchValue" 
+                formControlName="searchValue">
+          <div class="invalid-feedback"
+               *ngIf="itemNotFound">
+                Item não encontrado
+          </div>
         </div>
         <div class="invalid-feedback mb-3" *ngIf="searchItemForm.get('searchValue')?.errors?.required && searchItemForm.get('searchValue')?.touched">Digite o valor da busca.</div>
         <div>
@@ -55,9 +59,9 @@
           </thead>
           <tbody *ngIf="inventoryItems$; else: emptyList">
               <tr class="table-style__row-style"  *ngFor="let item of inventoryItems$" (click)="selectItem(item)">
-                <td class="table-style__row-style__content" [ngClass]="{'table-style__row-style__content__selected-content': item?.id === this.selectedItem?.id}">{{ item?.date | date:"short" }}</td>
-                <td class="table-style__row-style__content" [ngClass]="{'table-style__row-style__content__selected-content': item?.id === this.selectedItem?.id}">{{ item?.itemName }}</td>
-                <td class="table-style__row-style__content" [ngClass]="{'table-style__row-style__content__selected-content': item?.id === this.selectedItem?.id}">{{ item?.itemPrice | currency:'BRL':true:'1.2-2' }}</td>
+                <td class="table-style__row-style__content" [ngClass]="{'table-style__row-style__content__selected-content': item?._id === this.selectedItem?._id}">{{ item?.date | date:"short" }}</td>
+                <td class="table-style__row-style__content" [ngClass]="{'table-style__row-style__content__selected-content': item?._id === this.selectedItem?._id}">{{ item?.itemName }}</td>
+                <td class="table-style__row-style__content" [ngClass]="{'table-style__row-style__content__selected-content': item?._id === this.selectedItem?._id}">{{ item?.itemPrice | currency:'BRL':true:'1.2-2' }}</td>
               </tr>
           </tbody>
         </table>

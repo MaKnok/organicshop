@@ -12,6 +12,7 @@ import { ModalService } from 'src/app/tools/modal/modal.service'
   styleUrls: ['./manage-item.component.scss'],
 })
 export class ManageItemComponent implements OnInit {
+
   inventoryItems$: InventoryItem[];
   subscription: Subscription;
   categoryId: string = '';
@@ -25,6 +26,8 @@ export class ManageItemComponent implements OnInit {
 
   DELETE_ITEM_MESSAGE: string = 'Deseja mesmo deletar o item ' 
   DELETE_ICON: string = 'fa fa-trash';
+
+  itemNotFound: boolean = false;
 
   constructor(
     private addUpdateItemService: AddUpdateItemService,
@@ -84,11 +87,17 @@ export class ManageItemComponent implements OnInit {
         next: (res) => {
           console.table(res);
           console.log(res);
+          this.selectedItem = res[0];
+          this.addUpdateItemService.setSelectedItem(res[0]);
+
           this.inventoryItems$ = res;
           console.log('FOUND ITEMS >>', this.inventoryItems$);
+
+          this.itemNotFound = false; 
         },
         error: (error) => {
-          console.log('There was an error in Add Update List! >>', error);
+          console.log('There was an error in the item search! >>', error);
+          this.itemNotFound = true; 
         },
         complete: () => console.info('Items were successfully gotten!'),
       });

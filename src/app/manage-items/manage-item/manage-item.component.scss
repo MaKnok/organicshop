@@ -31,12 +31,14 @@
         cursor: pointer;
     
         &__content {
+
           border-bottom: 1px solid var(--brown);
           color: var(--brown);
 
           &__selected-content{
             font-weight: bolder;
           }
+
         }
     
         &:last-child {
