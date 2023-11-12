@@ -34,11 +34,11 @@
                     Digite o nome do novo item.
         </div>
 
-        <div *ngIf="newItemForm.get('itemName')?.errors?.existingItemName && 
+        <!--<div *ngIf="newItemForm.get('itemName')?.errors?.existingItemName && 
                     this.addUpdateItemService.getAction() == this.addUpdateItemService.ADD_ITEM"
               class="invalid-feedback mb-3">
             Item existente!
-        </div>
+        </div>-->
 
       </div>
     </div>
@@ -98,6 +98,10 @@
                       && newItemForm.get('itemPrice')?.touched">
                       Digite o preço do novo item.
           </div>
+
+          <div class="invalid-feedback mb-3" *ngIf="newItemForm.errors?.priceZeroValue">
+                      O preço do item não pode ser R$ 00,00.
+          </div>
       </div>
       </div>
     </div>
@@ -152,9 +156,8 @@
                    >
           </div>
 
-          <div class="invalid-feedback mb-3" *ngIf="newItemForm.get('itemPrice')?.errors?.required 
-                      && newItemForm.get('itemPrice')?.touched">
-                      Digite o preço do novo item.
+          <div class="invalid-feedback mb-3" *ngIf="newItemForm.errors?.priceZeroValue">
+            O preço do item não pode ser R$ 00,00.
           </div>
       </div>
       </div>
@@ -170,13 +173,13 @@
             <button class="btn btn-secondary btn-block" type="reset">Limpar</button>
           </div>
           <div class="col-lg-6 mt-3" *ngIf="this.addUpdateItemService.getAction() == this.addUpdateItemService.ADD_ITEM">
-            <button class="btn btn-primary btn-block" type="submit">Incluir</button>
+            <button class="btn btn-primary btn-block" [disabled]="this.newItemForm.invalid" type="submit">Incluir</button>
           </div>
           <div class="col-lg-6 mt-3" *ngIf="this.addUpdateItemService.getAction() == this.addUpdateItemService.UPDATE_ITEM">
             <!--layout space-->
           </div>
           <div class="col-lg-6 mt-3" *ngIf="this.addUpdateItemService.getAction() == this.addUpdateItemService.UPDATE_ITEM">
-            <button class="btn btn-primary btn-block" type="submit">Atualizar</button>
+            <button class="btn btn-primary btn-block" type="submit" [disabled]="this.newItemForm.invalid">Atualizar</button>
           </div>
         </div>
       </div>

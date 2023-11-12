@@ -83,7 +83,10 @@ export class AddUpdateItemService {
 
   searchItems(searchedValue:any): Observable<any> {
     console.log('Searched value >>', searchedValue);
-    return this.httpClient.get<InventoryItem[]>(this.url + '/inventoryItems/search?search=' + searchedValue.searchValue).pipe(
+
+    const search = this.checkRoute(searchedValue);
+
+    return this.httpClient.get<InventoryItem[]>(this.url + '/inventoryItems/search?search=' + search).pipe(
       map((items) => {
         return items;
       }),
@@ -91,6 +94,14 @@ export class AddUpdateItemService {
       catchError((err) => throwError(() => new Error(err))),
       retry(3)
     );
+  }
+
+  checkRoute(searchedValue:any){
+    if (this.router.url === '/add-update-item'){
+      return searchedValue;
+    }else {
+      return searchedValue.searchValue;
+    }
   }
 
   addItem(inventoryItem: InventoryItem): Observable<InventoryItem> {

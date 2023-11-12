@@ -6,6 +6,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ItemExistsService } from './item-exists.service';
 import { ManageItemsService } from '../manage-items.service';
 import { Observable, Subscription } from 'rxjs';
+import { priceZeroValueValidator } from './price-zero-value.validator';
 
 
 @Component({
@@ -52,18 +53,24 @@ export class AddUpdateItemComponent implements OnInit{
       this.newItemForm = this.formBuilder.group({
         itemName:['',
                   [Validators.required, Validators.minLength(3)],
-                  [this.itemExistsService.itemExists()]
                 ],
-        itemPrice:['',[Validators.required]],
+        itemPrice:['',[Validators.required, priceZeroValueValidator]],
         itemType:['un',[Validators.required]],
-      })
+      },
+      {
+        validators: [priceZeroValueValidator],
+      }
+    )
 
     }else if (this.addUpdateItemService.getAction() == this.addUpdateItemService.UPDATE_ITEM){
 
       this.newItemForm = this.formBuilder.group({
         itemName:[this.addUpdateItemService.getSelectedItem().itemName, [Validators.required, Validators.minLength(3)]],
-        itemPrice:[this.addUpdateItemService.getSelectedItem().itemPrice.toFixed(2),[Validators.required]],
+        itemPrice:[this.addUpdateItemService.getSelectedItem().itemPrice.toFixed(2), [Validators.required, priceZeroValueValidator]],
         itemType:['un',[Validators.required]],
+      },
+      {
+        validators: [priceZeroValueValidator],
       })
 
     }
@@ -133,6 +140,8 @@ export class AddUpdateItemComponent implements OnInit{
           }
         )
       }
+    }else{
+      alert('Invalid form')
     }
   }
 
