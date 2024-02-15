@@ -12,28 +12,30 @@ import { lastValueFrom } from 'rxjs';
 })
 export class TopBarComponent {
   constructor(private userService: UserService, 
-    public router: Router, 
-    private tokenService: TokenService) {}
+              public router: Router, 
+              private tokenService: TokenService) {}
 
   user$ = this.userService.returnUserData();
 
   async logout() {
+
     try {
       const token = this.tokenService.returnsToken();
       const logoutUrl = this.userService.logout(token);
 
       await lastValueFrom(logoutUrl);
-
+      
       // Clear the cookie on the client side
       document.cookie = 'jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-
+  
       // Navigate to the desired route
+      this.router.navigate(['/']);
       location.reload();
-      this.router.navigate(['']);
 
     } catch (error) {
       console.error(error);
       // Handle error
     }
   }
+
 }

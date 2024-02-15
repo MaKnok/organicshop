@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { confirmPasswordValidator } from './confirm-password.validator';
 import { User } from '../models/user.model';
 import { NewUserService } from './new-user.service';
@@ -22,7 +21,6 @@ export class NewUserComponent implements OnInit {
     private formBuilder: FormBuilder,
     private newUserService: NewUserService,
     private userExistsService: UserExistsService,
-    private router: Router,
     public modalService: ModalService,
   ) {}
 
@@ -37,7 +35,7 @@ export class NewUserComponent implements OnInit {
   ERROR_ICON: string = 'fa fa-exclamation-triangle';
 
   options: string[] = [
-    'Help Desk', 'TI', 'Vendas', 'Administração', 'Atendimento'
+    'Selecione o departamento', 'Help Desk', 'TI', 'Vendas', 'Administração', 'Atendimento'
   ]
 
   ngOnInit(): void {
@@ -84,7 +82,6 @@ export class NewUserComponent implements OnInit {
         userSegment: usersegment,
         userRole: userrole, 
       } as User;
-      console.log(newUser);
 
       this.newUserService.registerNewUser(newUser).subscribe({
         next: (response) => {
